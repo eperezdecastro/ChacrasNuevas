@@ -426,16 +426,16 @@ function SiteNav() {
     <>
       <nav className={"site-nav" + (scrolled ? " scrolled" : "")}>
         <div className="links left">
-          <a href="Editorial.html#proyecto">Proyecto</a>
-          <a href="Editorial.html#zona">La Zona</a>
+          <a href="/#proyecto">Proyecto</a>
+          <a href="/#zona">La Zona</a>
           <a href="Blog.html" style={{opacity:0.5, pointerEvents:"none"}}>Vida en Matanzas</a>
         </div>
-        <a className="brand" href="Editorial.html">
+        <a className="brand" href="/">
           <img src="assets/logo-chacras.png" alt="Chacras Nuevas de Matanzas" />
         </a>
         <div className="links right">
           <a href="MasterPlan.html">Master Plan</a>
-          <a href="Editorial.html#contacto">Contacto</a>
+          <a href="/#contacto">Contacto</a>
           <span className="lang">ES · EN</span>
         </div>
         <button className="menu-btn" onClick={() => setOpen(true)} aria-label="Menú">
@@ -446,11 +446,11 @@ function SiteNav() {
       </nav>
       {open && (
         <div className="menu-open" onClick={() => setOpen(false)}>
-          <a href="Editorial.html">Inicio</a>
-          <a href="Editorial.html#proyecto">Proyecto</a>
-          <a href="Editorial.html#zona">La Zona</a>
+          <a href="/">Inicio</a>
+          <a href="/#proyecto">Proyecto</a>
+          <a href="/#zona">La Zona</a>
           <a href="MasterPlan.html">Master Plan</a>
-          <a href="Editorial.html#contacto">Contacto</a>
+          <a href="/#contacto">Contacto</a>
           <button onClick={() => setOpen(false)} style={{marginTop:24,fontSize:12}}>Cerrar ✕</button>
         </div>
       )}
@@ -909,10 +909,10 @@ function SiteFoot({ onAdminClick }) {
         <div>
           <h4>Sitio web</h4>
           <ul>
-            <li><a href="Editorial.html#proyecto">El proyecto</a></li>
+            <li><a href="/#proyecto">El proyecto</a></li>
             <li><a href="MasterPlan.html">Master plan</a></li>
-            <li><a href="Editorial.html#ubicacion">Ubicación</a></li>
-            <li><a href="Editorial.html#contacto">Contacto</a></li>
+            <li><a href="/#ubicacion">Ubicación</a></li>
+            <li><a href="/#contacto">Contacto</a></li>
           </ul>
         </div>
         <div>
