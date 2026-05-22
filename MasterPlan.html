@@ -1,0 +1,1113 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Master Plan · Chacras Nuevas de Matanzas</title>
+  <meta name="description" content="Master plan completo: 10 sitios con superficie, estado y galería propia. Plano interactivo y descarga de brochure." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+/* ============================================================
+   EDITORIAL SITE — Chacras Nuevas de Matanzas
+   ============================================================ */
+:root {
+  --ed-bg: #f3ede1;
+  --ed-bg-2: #e9e0cf;
+  --ed-bg-3: #faf6ed;
+  --ed-ink: #1a1a17;
+  --ed-ink-2: #3d3a32;
+  --ed-muted: #8a8475;
+  --ed-line: rgba(26,26,23,0.12);
+  --ed-line-soft: rgba(26,26,23,0.06);
+  --ed-accent: #5a6b5a;
+  --ed-accent-2: #b08a5a;
+  --ed-dark: #14130f;
+  --ed-cream: #f5efe5;
+  --ed-serif: 'Cormorant Garamond', 'Times New Roman', serif;
+  --ed-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --ed-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --ed-shadow: 0 24px 60px -20px rgba(20,19,15,0.25);
+  --ed-h1: clamp(40px, 6vw, 88px);
+  --ed-h2: clamp(28px, 4vw, 56px);
+  --ed-h3: clamp(20px, 2.5vw, 32px);
+  --ed-body: clamp(15px, 1.05vw, 17px);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--ed-sans);
+  font-size: var(--ed-body);
+  line-height: 1.55;
+  color: var(--ed-ink);
+  background: var(--ed-bg);
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; }
+
+.eyebrow {
+  font-family: var(--ed-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ed-muted);
+}
+
+/* ===== Buttons ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--ed-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 14px 22px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  color: var(--ed-ink);
+  background: transparent;
+  transition: all .25s ease;
+}
+.btn:hover { background: var(--ed-ink); color: var(--ed-cream); border-color: var(--ed-ink); }
+.btn.solid { background: var(--ed-ink); color: var(--ed-cream); border-color: var(--ed-ink); }
+.btn.solid:hover { background: transparent; color: var(--ed-ink); }
+.btn.light { color: var(--ed-cream); border-color: rgba(245,239,229,0.7); }
+.btn.light:hover { background: var(--ed-cream); color: var(--ed-dark); border-color: var(--ed-cream); }
+.btn.solid.light { background: var(--ed-cream); color: var(--ed-dark); border-color: var(--ed-cream); }
+.btn.solid.light:hover { background: transparent; color: var(--ed-cream); border-color: var(--ed-cream); }
+.btn .arrow { transition: transform .25s ease; }
+.btn:hover .arrow { transform: translateX(4px); }
+.btn.wp { display: inline-flex; align-items: center; gap: 10px; }
+.btn.wp .pulse {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #79c267;
+  box-shadow: 0 0 0 4px rgba(121,194,103,0.25);
+}
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ===== Site nav ===== */
+.site-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 20px 32px;
+  transition: all .35s ease;
+  color: var(--ed-cream);
+  background: var(--ed-bg);
+  color: var(--ed-ink);
+  box-shadow: 0 1px 0 var(--ed-line);
+}
+.site-nav.scrolled {
+  padding: 14px 32px;
+}
+.site-nav .links {
+  display: flex;
+  gap: 28px;
+  font-family: var(--ed-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.site-nav .links.left { justify-self: start; }
+.site-nav .links.right { justify-self: end; }
+.site-nav .brand img {
+  height: 38px;
+  width: auto;
+  transition: height .35s ease;
+}
+.site-nav .lang {
+  border: 1px solid currentColor;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 10px;
+}
+.menu-btn { display: none; }
+
+/* ===== Section base ===== */
+.section {
+  padding: clamp(60px, 8vw, 110px) clamp(20px, 4vw, 64px);
+  border-top: 1px solid var(--ed-line);
+}
+.section.alt { background: var(--ed-bg-2); }
+.section .head { margin-bottom: 32px; }
+.section .head h2 {
+  font-family: var(--ed-serif);
+  font-weight: 400;
+  font-size: var(--ed-h2);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  margin: 12px 0 0;
+  max-width: 22em;
+}
+.section .head h2 em { font-style: italic; }
+.section p {
+  font-size: var(--ed-body);
+  line-height: 1.65;
+  color: var(--ed-ink-2);
+  max-width: 38em;
+}
+
+/* ===== Legend ===== */
+.legend {
+  display: flex;
+  gap: 22px;
+  margin-top: 18px;
+  font-family: var(--ed-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ed-muted);
+  flex-wrap: wrap;
+  align-items: center;
+}
+.legend i {
+  display: inline-block;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+.legend i.av { background: #79c267; }
+.legend i.re { background: #d6ad65; }
+.legend i.so { background: #b3b3ad; }
+
+/* ===== Master plan visualization ===== */
+.masterplan-vis {
+  position: relative;
+  aspect-ratio: 1212/784;
+  background: var(--ed-bg-3);
+  border: 1px solid var(--ed-line);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.masterplan-vis .map {
+  position: absolute; inset: 0;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(assets/proyecto/master-plan.png);
+}
+.masterplan-vis .pin {
+  position: absolute;
+  width: 32px; height: 32px;
+  margin: -16px 0 0 -16px;
+  border-radius: 50%;
+  background: rgba(245,239,229,0.94);
+  color: var(--ed-ink);
+  font-family: var(--ed-serif);
+  font-style: italic;
+  font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: transform .25s, box-shadow .25s;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+  border: 2px solid transparent;
+}
+.masterplan-vis .pin:hover { transform: scale(1.18); box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
+.masterplan-vis .pin.av { background: #79c267; color: #14130f; border-color: rgba(255,255,255,0.6); }
+.masterplan-vis .pin.re { background: #d6ad65; color: #14130f; border-color: rgba(255,255,255,0.6); }
+.masterplan-vis .pin.so { background: rgba(179,179,173,0.85); color: #fff; }
+
+/* ===== Sitios cards ===== */
+.sitios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+}
+.sitio-card {
+  position: relative;
+  background: var(--ed-bg);
+  border: 1px solid var(--ed-line);
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all .3s ease;
+  text-align: left;
+  width: 100%;
+}
+.sitio-card:hover { transform: translateY(-3px); box-shadow: var(--ed-shadow); }
+.sitio-card .cover {
+  aspect-ratio: 4/3;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.sitio-card .cover::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(20,19,15,0) 60%, rgba(20,19,15,0.6) 100%);
+}
+.sitio-card .cover .num {
+  position: absolute; top: 14px; left: 14px;
+  font-family: var(--ed-serif);
+  font-style: italic;
+  font-size: 32px;
+  color: var(--ed-cream);
+  z-index: 2;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+}
+.sitio-card .cover .pin {
+  position: absolute; top: 14px; right: 14px;
+  font-family: var(--ed-mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  background: rgba(245,239,229,0.92);
+  color: var(--ed-ink);
+  padding: 5px 10px;
+  border-radius: 999px;
+  z-index: 2;
+  width: auto; height: auto;
+  margin: 0;
+  box-shadow: none;
+  border: none;
+  font-style: normal;
+  display: inline-block;
+  cursor: default;
+  transform: none;
+}
+.sitio-card .cover .pin.av { background: #79c267; color: #14130f; }
+.sitio-card .cover .pin.re { background: #d6ad65; color: #14130f; }
+.sitio-card .cover .pin.so { background: #b3b3ad; color: #ffffff; }
+.sitio-card .body {
+  padding: 16px 18px 18px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+.sitio-card .area {
+  font-family: var(--ed-serif);
+  font-style: italic;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+}
+.sitio-card .price {
+  font-family: var(--ed-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--ed-ink-2);
+}
+.sitio-card .more {
+  position: absolute;
+  bottom: 12px; right: 14px;
+  font-family: var(--ed-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ed-muted);
+  opacity: 0;
+  transition: opacity .25s;
+}
+.sitio-card:hover .more { opacity: 1; }
+
+/* ===== Table ===== */
+.sitios-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--ed-sans);
+  margin-top: 24px;
+}
+.sitios-table th {
+  font-family: var(--ed-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ed-muted);
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--ed-line);
+  font-weight: 400;
+}
+.sitios-table td {
+  padding: 18px 16px;
+  border-bottom: 1px solid var(--ed-line-soft);
+  font-size: 14px;
+}
+.sitios-table tr:hover td { background: var(--ed-bg-3); }
+.sitios-table .num {
+  font-family: var(--ed-serif);
+  font-style: italic;
+  font-size: 22px;
+}
+.sitios-table .stat {
+  font-family: var(--ed-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  display: inline-block;
+}
+.sitios-table .stat.av { background: rgba(121,194,103,0.18); color: #2e6b1e; }
+.sitios-table .stat.re { background: rgba(214,173,101,0.22); color: #806020; }
+.sitios-table .stat.so { background: rgba(179,179,173,0.25); color: #4d4d48; }
+
+/* ===== Form / Contacto ===== */
+.form-block {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: clamp(28px, 4vw, 80px);
+  align-items: start;
+}
+.form-block form { display: grid; gap: 14px; }
+.form-block input,
+.form-block select,
+.form-block textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--ed-line);
+  padding: 14px 0;
+  font-family: var(--ed-sans);
+  font-size: 15px;
+  outline: none;
+  color: var(--ed-ink);
+  width: 100%;
+}
+.form-block input:focus,
+.form-block select:focus,
+.form-block textarea:focus { border-bottom-color: var(--ed-ink); }
+.form-block textarea { resize: vertical; min-height: 80px; }
+
+/* ===== Lightbox ===== */
+.lb {
+  position: fixed; inset: 0;
+  z-index: 100;
+  background: rgba(20,19,15,0.78);
+  backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+  animation: fadeIn .25s ease;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.lb-card {
+  background: var(--ed-bg);
+  width: 100%;
+  max-width: 1100px;
+  max-height: 92vh;
+  border-radius: 4px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  overflow: hidden;
+  position: relative;
+}
+.lb-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px 28px 0;
+}
+.lb-num {
+  font-family: var(--ed-serif);
+  font-style: italic;
+  font-size: 42px;
+  line-height: 1;
+}
+.lb-meta { font-family: var(--ed-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ed-muted); }
+.lb-close {
+  position: absolute;
+  top: 14px; right: 18px;
+  font-size: 24px;
+  color: var(--ed-muted);
+  z-index: 5;
+  cursor: pointer;
+}
+.lb-main {
+  position: relative;
+  padding: 18px 28px;
+  overflow: hidden;
+}
+.lb-stage {
+  position: relative;
+  aspect-ratio: 16/10;
+  background: var(--ed-bg-2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.lb-stage .img {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: opacity .3s;
+}
+.lb-stage .cap {
+  position: absolute;
+  left: 20px; bottom: 18px;
+  z-index: 3;
+  color: var(--ed-cream);
+  text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+}
+.lb-stage::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.55) 100%);
+  pointer-events: none;
+}
+.gal-tag {
+  font-family: var(--ed-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #d8c69a;
+  display: block;
+  margin-bottom: 6px;
+}
+.gal-title {
+  font-family: var(--ed-serif);
+  font-style: italic;
+  font-size: clamp(15px, 1.4vw, 22px);
+  line-height: 1.25;
+  color: var(--ed-cream);
+}
+.gal-sub {
+  font-size: 12px;
+  color: rgba(245,239,229,0.78);
+  margin-top: 4px;
+  font-family: var(--ed-sans);
+}
+.lb-thumbs {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+.lb-thumb {
+  position: relative;
+  flex: 0 0 92px;
+  aspect-ratio: 4/3;
+  background-size: cover;
+  background-position: center;
+  border-radius: 2px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color .2s;
+  overflow: hidden;
+}
+.lb-thumb.active { border-color: var(--ed-ink); }
+.lb-thumb .star {
+  position: absolute;
+  top: 4px; right: 4px;
+  background: rgba(245,239,229,0.92);
+  color: var(--ed-ink);
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  font-size: 13px;
+  display: flex; align-items: center; justify-content: center;
+}
+.lb-thumb.is-cover .star { background: var(--ed-accent-2); color: var(--ed-cream); }
+.lb-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 28px 22px;
+  border-top: 1px solid var(--ed-line);
+  background: var(--ed-bg-3);
+  flex-wrap: wrap;
+}
+.lb-foot .stats {
+  display: flex; gap: 24px;
+  font-family: var(--ed-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ed-ink-2);
+}
+.lb-foot .stats strong {
+  font-family: var(--ed-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  display: block;
+  color: var(--ed-ink);
+  margin-top: 4px;
+  text-transform: none;
+}
+
+/* ===== Modal ===== */
+.modal {
+  position: fixed; inset: 0;
+  z-index: 110;
+  background: rgba(20,19,15,0.65);
+  backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.modal-card {
+  background: var(--ed-bg);
+  width: 100%;
+  max-width: 480px;
+  padding: 40px 32px 32px;
+  border-radius: 4px;
+  position: relative;
+  box-shadow: 0 30px 80px -20px rgba(0,0,0,0.5);
+}
+.modal-close {
+  position: absolute;
+  top: 12px; right: 14px;
+  font-size: 24px;
+  color: var(--ed-muted);
+  cursor: pointer;
+}
+.modal h3 {
+  font-family: var(--ed-serif);
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 1.05;
+  margin: 10px 0 8px;
+}
+.modal h3 em { font-style: italic; }
+
+/* ===== WP FAB ===== */
+.wp-fab {
+  position: fixed;
+  bottom: 24px; right: 24px;
+  z-index: 40;
+  background: #2a302a;
+  color: var(--ed-cream);
+  border-radius: 999px;
+  padding: 14px 22px;
+  font-family: var(--ed-sans);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 18px 40px -12px rgba(0,0,0,0.4);
+  transition: transform .2s;
+}
+.wp-fab:hover { transform: translateY(-2px); }
+.wp-fab .pulse {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #79c267;
+  box-shadow: 0 0 0 4px rgba(121,194,103,0.28);
+}
+
+/* ===== Footer ===== */
+.site-foot {
+  background: var(--ed-dark);
+  color: var(--ed-cream);
+  padding: 80px 32px 32px;
+}
+.site-foot .top {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 40px;
+  border-bottom: 1px solid rgba(245,239,229,0.12);
+  padding-bottom: 48px;
+}
+.site-foot img { height: 60px; filter: invert(1) brightness(1.05); }
+.site-foot h4 {
+  font-family: var(--ed-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(245,239,229,0.6);
+  margin: 0 0 16px;
+  font-weight: 400;
+}
+.site-foot ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.site-foot ul li { font-size: 14px; color: rgba(245,239,229,0.85); }
+.site-foot .bottom {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 24px;
+  font-family: var(--ed-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(245,239,229,0.5);
+}
+
+/* ===== Master Plan hero ===== */
+.mp-hero {
+  padding: 120px 32px 60px;
+  background: var(--ed-bg);
+  border-bottom: 1px solid var(--ed-line);
+}
+.mp-hero-inner { max-width: 980px; margin: 0 auto; }
+.mp-hero h1 {
+  font-family: var(--ed-serif);
+  font-weight: 400;
+  font-size: clamp(40px, 6vw, 84px);
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  margin: 14px 0 24px;
+}
+.mp-hero h1 em { font-style: italic; }
+.mp-hero p { font-size: clamp(15px, 1.1vw, 17px); max-width: 38em; color: var(--ed-ink-2); }
+
+/* ===== Responsive ===== */
+@media (max-width: 980px) {
+  .site-nav { grid-template-columns: 1fr auto; padding: 14px 20px; }
+  .site-nav .links { display: none; }
+  .menu-btn { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; color: inherit; justify-self: end; }
+  .site-nav .brand { justify-self: start; }
+  .menu-open { display: flex !important; flex-direction: column; position: fixed; inset: 0; background: var(--ed-bg); padding: 80px 32px; gap: 18px; align-items: center; justify-content: center; font-size: 18px; letter-spacing: 0.12em; z-index: 60; color: var(--ed-ink); }
+  .form-block { grid-template-columns: 1fr; }
+  .site-foot .top { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .site-foot .bottom { flex-direction: column; gap: 8px; }
+  .lb-card { max-height: 96vh; }
+  .lb-head { padding: 18px 20px 0; }
+  .lb-main { padding: 12px 20px; }
+  .lb-foot { padding: 14px 20px 16px; }
+  .lb-num { font-size: 32px; }
+  .wp-fab { bottom: 16px; right: 16px; padding: 12px 18px; font-size: 11px; }
+  .mp-hero { padding: 100px 20px 40px; }
+  .sitios-table th:nth-child(3), .sitios-table td:nth-child(3) { display: none; }
+}
+@media (max-width: 640px) {
+  .sitios-grid { grid-template-columns: 1fr 1fr; }
+}
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel">
+const { useState, useEffect, useRef } = React;
+
+const WA_URL = "https://wa.me/56974300513?text=Me%20interesa%20saber%20m%C3%A1s%20de%20Chacras%20Nuevas";
+const EMAIL   = "eperezdecastro@gmail.com";
+const PHONE   = "+56 9 7430 0513";
+
+/* ============================================================
+   DATA
+   ============================================================ */
+const DATA = {
+  sitios: [
+    { sitio:"01", m2:654,  precio:"UF 4.260", estado:"Disponible", imagenes:[{src:"assets/sitios/sitio-08-a.jpg",    title:"Sitio 01 · vista frontal",   caption:"Hacia el oeste · línea de costa.",      cover:true}] },
+    { sitio:"02", m2:667,  precio:"UF 4.340", estado:"Disponible", imagenes:[{src:"assets/proyecto/pradera.png",     title:"Sitio 02 · plataforma",      caption:"Pradera con casas vecinas al fondo.",   cover:true}] },
+    { sitio:"03", m2:661,  precio:"UF 4.300", estado:"Disponible", imagenes:[{src:"assets/proyecto/pradera.png",     title:"Sitio 03 · pradera",         caption:"661 m² · pradera.",                     cover:true}] },
+    { sitio:"04", m2:690,  precio:"—",        estado:"Reservado",  imagenes:[{src:"assets/sitios/sitio-08-b.jpg",    title:"Sitio 04 · plataforma",      caption:"Vista directa al mar.",                 cover:true}] },
+    { sitio:"05", m2:727,  precio:"UF 4.730", estado:"Disponible", imagenes:[{src:"assets/vida/mar-curva.jpg",       title:"Sitio 05 · plataforma alta", caption:"727 m² · sobre el camino interior.",   cover:true}] },
+    { sitio:"06", m2:926,  precio:"UF 6.110", estado:"Disponible", imagenes:[{src:"assets/sitios/sitio-06-a.png",    title:"Sitio 06 · panorámica",      caption:"926 m² · vista 180° al Pacífico.",     cover:true}] },
+    { sitio:"07", m2:647,  precio:"UF 4.530", estado:"Disponible", imagenes:[{src:"assets/proyecto/camino-curva.jpg",title:"Sitio 07 · acceso interior",  caption:"647 m² · resguardado del viento.",     cover:true}] },
+    { sitio:"08", m2:832,  precio:"UF 5.580", estado:"Disponible", imagenes:[
+      {src:"assets/sitios/sitio-08-a.jpg", title:"Sitio 08 · vista frontal", caption:"832 m² · vista al mar abierto e islotes.", cover:true},
+      {src:"assets/sitios/sitio-08-b.jpg", title:"Sitio 08 · vista lateral", caption:"Hacia el norte · luz de mañana.",          cover:false}
+    ]},
+    { sitio:"09", m2:729,  precio:"UF 4.890", estado:"Disponible", imagenes:[{src:"assets/sitios/sitio-09-a.png",    title:"Sitio 09 · línea de islotes", caption:"729 m² · vista a la rompiente.",      cover:true}] },
+    { sitio:"10", m2:622,  precio:"UF 4.050", estado:"Disponible", imagenes:[{src:"assets/vida/persona-costa.jpg",   title:"Sitio 10 · mirador",         caption:"622 m² · primer sitio del proyecto.",  cover:true}] }
+  ]
+};
+
+const STATUS_KEY = (s) => s === "Disponible" ? "av" : s === "Reservado" ? "re" : "so";
+
+// Pin positions on master plan image (% x, % y)
+const PIN_POSITIONS = {
+  "01": [89, 48], "02": [78, 54], "03": [66, 61], "04": [55, 67],
+  "05": [43, 72], "06": [29, 77], "07": [31, 53], "08": [38, 32],
+  "09": [54, 28], "10": [73, 28]
+};
+
+/* ============================================================
+   SHARED COMPONENTS
+   ============================================================ */
+function SiteNav() {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    const fn = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", fn);
+    fn();
+    return () => window.removeEventListener("scroll", fn);
+  }, []);
+  return (
+    <>
+      <nav className={"site-nav" + (scrolled ? " scrolled" : "")}>
+        <div className="links left">
+          <a href="Editorial.html#proyecto">Proyecto</a>
+          <a href="Editorial.html#zona">La Zona</a>
+          <a href="Blog.html">Vida en Matanzas</a>
+        </div>
+        <a className="brand" href="Editorial.html">
+          <img src="assets/logo-chacras.png" alt="Chacras Nuevas de Matanzas" />
+        </a>
+        <div className="links right">
+          <a href="MasterPlan.html" style={{opacity:0.5, pointerEvents:"none"}}>Master Plan</a>
+          <a href="#contacto">Contacto</a>
+          <span className="lang">ES · EN</span>
+        </div>
+        <button className="menu-btn" onClick={() => setOpen(true)} aria-label="Menú">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <line x1="3" y1="7" x2="21" y2="7"/>
+            <line x1="3" y1="17" x2="21" y2="17"/>
+          </svg>
+        </button>
+      </nav>
+      {open && (
+        <div className="menu-open" onClick={() => setOpen(false)}>
+          <a href="Editorial.html">Inicio</a>
+          <a href="Editorial.html#proyecto">Proyecto</a>
+          <a href="Editorial.html#zona">La Zona</a>
+          <a href="Blog.html">Vida en Matanzas</a>
+          <a href="#contacto">Contacto</a>
+          <button onClick={() => setOpen(false)} style={{marginTop:24, fontSize:12}}>Cerrar ✕</button>
+        </div>
+      )}
+    </>
+  );
+}
+
+function BrochureModal({ onClose }) {
+  return (
+    <div className="modal" onClick={onClose}>
+      <div className="modal-card" onClick={e => e.stopPropagation()}>
+        <button className="modal-close" onClick={onClose}>×</button>
+        <span className="eyebrow">Brochure · PDF · 3.8 MB</span>
+        <h3>Recibe el brochure<br/><em>completo</em>.</h3>
+        <p style={{fontSize:14, color:"var(--ed-ink-2)", margin:"6px 0 18px"}}>
+          Master plan, planos individuales, lista de precios y condiciones.
+        </p>
+        <form onSubmit={e => { e.preventDefault(); onClose(); }} style={{display:"grid", gap:12}}>
+          <input placeholder="Nombre" required style={{background:"transparent",border:"none",borderBottom:"1px solid var(--ed-line)",padding:"12px 0",fontFamily:"var(--ed-sans)",fontSize:15,outline:"none",color:"var(--ed-ink)"}}/>
+          <input placeholder="Email" type="email" required style={{background:"transparent",border:"none",borderBottom:"1px solid var(--ed-line)",padding:"12px 0",fontFamily:"var(--ed-sans)",fontSize:15,outline:"none",color:"var(--ed-ink)"}}/>
+          <input placeholder="Teléfono" style={{background:"transparent",border:"none",borderBottom:"1px solid var(--ed-line)",padding:"12px 0",fontFamily:"var(--ed-sans)",fontSize:15,outline:"none",color:"var(--ed-ink)"}}/>
+          <button type="submit" className="btn solid">Enviar y descargar <span className="arrow">→</span></button>
+          <a href={WA_URL} target="_blank" rel="noopener noreferrer" style={{textAlign:"center",fontFamily:"var(--ed-mono)",fontSize:11,letterSpacing:"0.16em",textTransform:"uppercase",display:"inline-flex",alignItems:"center",gap:8,justifyContent:"center",marginTop:6}}>
+            <span style={{width:7,height:7,borderRadius:"50%",background:"#79c267",boxShadow:"0 0 0 3px rgba(121,194,103,0.28)"}}></span>
+            Prefiero hablar por WhatsApp
+          </a>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+function SiteFoot() {
+  return (
+    <footer className="site-foot">
+      <div className="top">
+        <div>
+          <img src="assets/logo-chacras.png" alt="Chacras Nuevas" />
+          <p style={{margin:"18px 0 0", maxWidth:"22em", color:"rgba(245,239,229,0.75)"}}>
+            Diez sitios sobre el mar.<br/>Centinela, Matanzas, Navidad.
+          </p>
+        </div>
+        <div>
+          <h4>Sitio</h4>
+          <ul>
+            <li><a href="Editorial.html#proyecto">Proyecto</a></li>
+            <li><a href="Editorial.html#galeria">Galería</a></li>
+            <li><a href="#plano">Plano interactivo</a></li>
+            <li><a href="Editorial.html#ubicacion">Ubicación</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href={WA_URL} target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+            <li>{PHONE}</li>
+            <li><a href={"mailto:" + EMAIL}>{EMAIL}</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul><li>Aviso legal</li><li>Privacidad</li><li>Cookies</li></ul>
+        </div>
+      </div>
+      <div className="bottom">
+        <span>© 2026 Chacras Nuevas de Matanzas</span>
+        <span>Pérez de Castro · Landgren</span>
+      </div>
+    </footer>
+  );
+}
+
+function WpFab() {
+  return (
+    <a className="wp-fab" href={WA_URL} target="_blank" rel="noopener noreferrer">
+      <span className="pulse"></span> WhatsApp
+    </a>
+  );
+}
+
+/* ============================================================
+   SITIO LIGHTBOX
+   ============================================================ */
+function SitioLightbox({ sitio, coverIndex, onSetCover, onClose }) {
+  const initial = coverIndex != null ? coverIndex : sitio.imagenes.findIndex(i => i.cover);
+  const [active, setActive] = useState(Math.max(0, initial));
+  const k = STATUS_KEY(sitio.estado);
+
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowRight") setActive(i => Math.min(sitio.imagenes.length - 1, i + 1));
+      if (e.key === "ArrowLeft")  setActive(i => Math.max(0, i - 1));
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [sitio.imagenes.length, onClose]);
+
+  const img = sitio.imagenes[active];
+  const currentCoverIdx = coverIndex != null ? coverIndex : sitio.imagenes.findIndex(i => i.cover);
+  const isCoverNow = currentCoverIdx === active;
+
+  return (
+    <div className="lb" onClick={onClose}>
+      <div className="lb-card" onClick={e => e.stopPropagation()}>
+        <button className="lb-close" onClick={onClose}>×</button>
+        <div className="lb-head">
+          <div>
+            <div className="lb-num">Sitio {sitio.sitio}</div>
+            <div className="lb-meta">{sitio.m2} m² · {sitio.estado}</div>
+          </div>
+          <div style={{fontFamily:"var(--ed-mono)", fontSize:11, letterSpacing:"0.16em", textTransform:"uppercase", color:"var(--ed-muted)"}}>
+            {active + 1} / {sitio.imagenes.length}
+          </div>
+        </div>
+        <div className="lb-main">
+          <div className="lb-stage">
+            <div className="img" style={{backgroundImage:`url(${img.src})`}}></div>
+            <div className="cap">
+              <div className="gal-tag">Sitio {sitio.sitio}</div>
+              <div className="gal-title">{img.title}</div>
+              <div className="gal-sub">{img.caption}</div>
+            </div>
+          </div>
+          {sitio.imagenes.length > 1 && (
+            <div className="lb-thumbs">
+              {sitio.imagenes.map((im, i) => {
+                const isCov = currentCoverIdx === i;
+                return (
+                  <div
+                    key={i}
+                    className={"lb-thumb" + (i === active ? " active" : "") + (isCov ? " is-cover" : "")}
+                    style={{backgroundImage:`url(${im.src})`}}
+                    onClick={() => setActive(i)}
+                    title={im.title}
+                  >
+                    {isCov && <span className="star" title="Portada actual">★</span>}
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
+        <div className="lb-foot">
+          <div className="stats">
+            <div>Sitio<strong>Nº {sitio.sitio}</strong></div>
+            <div>Superficie<strong>{sitio.m2} m²</strong></div>
+            <div>Estado<strong>{sitio.estado}</strong></div>
+            {/* precio oculto — disponible bajo consulta */}
+          </div>
+          <div style={{display:"flex", gap:10, flexWrap:"wrap"}}>
+            {sitio.imagenes.length > 1 && (
+              <button className="btn" onClick={() => onSetCover(active)} disabled={isCoverNow}
+                style={{opacity: isCoverNow ? 0.5 : 1}}>
+                {isCoverNow ? "★ Portada actual" : "Usar como portada"}
+              </button>
+            )}
+            <a href={WA_URL} target="_blank" rel="noopener noreferrer" className="btn solid wp" onClick={onClose}>
+              <span className="pulse"></span>Consultar este sitio
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ============================================================
+   MASTER PLAN PAGE
+   ============================================================ */
+function MasterPlanPage() {
+  const [openSitio, setOpenSitio] = useState(null);
+  const [showBrochure, setShowBrochure] = useState(false);
+  const [coverIndex, setCoverIndex] = useState({});
+
+  const setCover = (sitio, idx) => {
+    setCoverIndex(prev => ({ ...prev, [sitio]: idx }));
+  };
+
+  const coverFor = (s) => {
+    const i = coverIndex[s.sitio] != null ? coverIndex[s.sitio] : s.imagenes.findIndex(im => im.cover);
+    return s.imagenes[Math.max(0, i)] || s.imagenes[0];
+  };
+
+  return (
+    <>
+      <SiteNav />
+
+      {/* Page hero */}
+      <header className="mp-hero">
+        <div className="mp-hero-inner">
+          <span className="eyebrow">Master plan · Etapa 01</span>
+          <h1>Diez sitios,<br/><em>una sola vista</em>.</h1>
+          <p>Haz click en cualquier sitio del plano para ver superficie, precio, estado y galería de imágenes desde ese punto exacto.</p>
+          <div style={{display:"flex", gap:12, marginTop:24, flexWrap:"wrap"}}>
+            <button className="btn solid" onClick={() => setShowBrochure(true)}>
+              Recibir brochure <span className="arrow">→</span>
+            </button>
+            <a className="btn" href="assets/master-plan.pdf" target="_blank" rel="noopener">
+              Ver Master Plan PDF <span className="arrow">↗</span>
+            </a>
+            <a className="btn wp" href={WA_URL} target="_blank" rel="noopener noreferrer">
+              <span className="pulse"></span>WhatsApp
+            </a>
+          </div>
+        </div>
+      </header>
+
+      {/* Plano interactivo */}
+      <section className="section" id="plano">
+        <div className="head">
+          <span className="eyebrow">Plano interactivo</span>
+          <h2>Click en cada sitio para <em>verlo por dentro</em>.</h2>
+        </div>
+        <div className="masterplan-vis">
+          <div className="map"></div>
+          {DATA.sitios.map(s => {
+            const [x, y] = PIN_POSITIONS[s.sitio] || [50, 50];
+            const k = STATUS_KEY(s.estado);
+            return (
+              <button
+                key={s.sitio}
+                className={"pin " + k}
+                style={{left: x + "%", top: y + "%"}}
+                onClick={() => setOpenSitio(s.sitio)}
+                title={`Sitio ${s.sitio} · ${s.m2} m² · ${s.estado}`}
+              >
+                {s.sitio}
+              </button>
+            );
+          })}
+        </div>
+        <div className="legend">
+          <span><i className="av"></i> Disponible</span>
+          <span><i className="re"></i> Reservado</span>
+          <span><i className="so"></i> Vendido</span>
+        </div>
+      </section>
+
+      {/* Galería de sitios */}
+      <section className="section alt" id="sitios">
+        <div className="head">
+          <span className="eyebrow">Galería · 10 sitios</span>
+          <h2>Cada sitio, su <em>vista propia</em>.</h2>
+        </div>
+        <div className="sitios-grid">
+          {DATA.sitios.map(s => {
+            const cover = coverFor(s);
+            const k = STATUS_KEY(s.estado);
+            return (
+              <button key={s.sitio} className="sitio-card" onClick={() => setOpenSitio(s.sitio)}>
+                <div className="cover" style={{backgroundImage:`url(${cover.src})`}}>
+                  <span className="num">{s.sitio}</span>
+                  <span className={"pin " + k}>{s.estado}</span>
+                </div>
+                <div className="body">
+                  <span className="area">{s.m2} m²</span>
+                  <span className={"price " + STATUS_KEY(s.estado)}>{s.estado}</span>
+                </div>
+                <span className="more">Ver galería →</span>
+              </button>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Tabla */}
+      <section className="section" id="listado">
+        <div className="head">
+          <span className="eyebrow">Listado completo</span>
+          <h2>Detalle por sitio.</h2>
+        </div>
+        <table className="sitios-table">
+          <thead>
+            <tr>
+              <th>Sitio</th>
+              <th>Superficie</th>
+              <th>Vista</th>
+              <th>Estado</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {DATA.sitios.map(s => {
+              const k = STATUS_KEY(s.estado);
+              return (
+                <tr key={s.sitio} onClick={() => setOpenSitio(s.sitio)} style={{cursor:"pointer"}}>
+                  <td><span className="num">{s.sitio}</span></td>
+                  <td>{s.m2} m²</td>
+                  <td style={{color:"var(--ed-muted)", fontSize:13}}>{s.imagenes[0].caption.split(" · ").slice(-1)[0]}</td>
+                  <td><span className={"stat " + k}>{s.estado}</span></td>
+                  <td style={{textAlign:"right", fontFamily:"var(--ed-mono)", fontSize:11, letterSpacing:"0.16em", textTransform:"uppercase", color:"var(--ed-muted)"}}>Ver →</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </section>
+
+      {/* Contacto */}
+      <section className="section alt" id="contacto">
+        <div className="form-block">
+          <div>
+            <span className="eyebrow">Contacto</span>
+            <h2 style={{fontFamily:"var(--ed-serif)", fontWeight:400, fontSize:"var(--ed-h2)", lineHeight:1.08, margin:"14px 0 24px"}}>
+              ¿Te interesa <em style={{fontStyle:"italic"}}>algún sitio</em>?
+            </h2>
+            <p>Déjanos tus datos y te enviamos el brochure completo con planos individuales, precios, condiciones y agendamos una visita al terreno.</p>
+            <div style={{display:"flex", gap:12, marginTop:24, flexWrap:"wrap"}}>
+              <a href={WA_URL} target="_blank" rel="noopener noreferrer" className="btn solid wp"><span className="pulse"></span>WhatsApp directo</a>
+              <a className="btn" href="assets/master-plan.pdf" target="_blank" rel="noopener">Master Plan PDF ↗</a>
+            </div>
+          </div>
+          <form onSubmit={e => e.preventDefault()}>
+            <input placeholder="Nombre" required />
+            <input placeholder="Email" type="email" required />
+            <input placeholder="Teléfono" />
+            <select defaultValue="">
+              <option value="" disabled>Sitio de interés</option>
+              <option>Aún no lo sé</option>
+              {DATA.sitios.filter(s => s.estado === "Disponible").map(s => (
+                <option key={s.sitio}>Sitio {s.sitio} · {s.m2} m²</option>
+              ))}
+            </select>
+            <textarea rows="3" placeholder="Mensaje (opcional)"></textarea>
+            <button type="submit" className="btn solid" style={{justifySelf:"start", marginTop:8}}>
+              Recibir brochure <span className="arrow">→</span>
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <SiteFoot />
+      <WpFab />
+
+      {openSitio && (
+        <SitioLightbox
+          sitio={DATA.sitios.find(s => s.sitio === openSitio)}
+          coverIndex={coverIndex[openSitio]}
+          onSetCover={(idx) => setCover(openSitio, idx)}
+          onClose={() => setOpenSitio(null)}
+        />
+      )}
+      {showBrochure && <BrochureModal onClose={() => setShowBrochure(false)} />}
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<MasterPlanPage />);
+  </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+# ─────────────────────────────────────────────────────────────
+# netlify.toml · Chacras Nuevas de Matanzas
+# Sitio estático puro — sin paso de build.
+# ─────────────────────────────────────────────────────────────
+
+[build]
+  publish = "."     # raíz del repo = carpeta publicada
+  # command = ""    # sin build command (HTML estático)
+
+# ── Redirect raíz ─────────────────────────────────────────────
+[[redirects]]
+  from   = "/"
+  to     = "/Editorial.html"
+  status = 301
+
+# ── Headers de seguridad (todas las páginas) ──────────────────
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options           = "SAMEORIGIN"
+    X-Content-Type-Options    = "nosniff"
+    Referrer-Policy           = "strict-origin-when-cross-origin"
+    Permissions-Policy        = "camera=(), microphone=(), geolocation=()"
+
+# ── Cache: HTML — siempre fresco ──────────────────────────────
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# ── Cache: posts.json — siempre fresco (contenido editorial) ──
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# ── Cache: assets estáticos — 1 año (imágenes, PDF, logos) ───
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

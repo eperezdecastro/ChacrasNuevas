@@ -1,0 +1,72 @@
+[
+  {
+    "id": "s1",
+    "title": "La caleta al atardecer: el corazón de Matanzas",
+    "category": "lugar",
+    "status": "publicado",
+    "imageUrl": "assets/vida/caleta-sunset.jpg",
+    "body": "La caleta de pescadores de Matanzas es mucho más que un muelle. Al atardecer, cuando los botes vuelven y la luz del Pacífico tiñe el cielo de naranja, el lugar se convierte en uno de los más bellos del litoral central.\n\nEn temporada alta los pescadores sacan corbina, reineta y erizo fresco. Vale la pena llegar temprano para comprar directo del bote. La caleta tiene también un pequeño mercado donde venden algas y mariscos secos.",
+    "link": "https://maps.google.com/?q=caleta+matanzas+chile",
+    "linkText": "Ver en Google Maps",
+    "date": "2026-04-15",
+    "createdAt": 1713000000000,
+    "publishedAt": 1713100000000,
+    "rejectionNote": null
+  },
+  {
+    "id": "s2",
+    "title": "La Pizzería: masa artesanal y vista al Pacífico",
+    "category": "restaurante",
+    "status": "publicado",
+    "imageUrl": "assets/vida/la-pizzeria.png",
+    "body": "Entre tablas de surf y mapas de viento, La Pizzería de Matanzas se ha convertido en el restaurante de referencia del pueblo. La masa es artesanal, el horno de leña trabaja hasta tarde, y la terraza con vista al mar hace que la espera valga la pena.\n\nNo aceptan reservas. Llega temprano en temporada alta. La pizza de mariscos con algas locales es la recomendación de la casa.",
+    "link": "",
+    "linkText": "",
+    "date": "2026-03-28",
+    "createdAt": 1711600000000,
+    "publishedAt": 1711700000000,
+    "rejectionNote": null
+  },
+  {
+    "id": "s3",
+    "title": "Bikepark OMZ: singletracks entre pinos costeros",
+    "category": "deporte",
+    "status": "publicado",
+    "imageUrl": "assets/vida/bikepark-omz.png",
+    "body": "A 500 metros del proyecto, el Bikepark Olas de Matanzas tiene uno de los trazados más divertidos del litoral central. Bajadas entre pinos, saltos medios y un pumptrack para calentar.\n\nSe puede rentar bicicleta en el lugar. El panorama del mar entre los árboles mientras bajas no tiene precio. Abierto todo el año; acceso libre los fines de semana.",
+    "link": "",
+    "linkText": "",
+    "date": "2026-03-10",
+    "createdAt": 1710100000000,
+    "publishedAt": 1710200000000,
+    "rejectionNote": null
+  },
+  {
+    "id": "s4",
+    "title": "Temporada de kite 2026: lo que viene este verano",
+    "category": "evento",
+    "status": "borrador",
+    "imageUrl": "assets/vida/persona-mar.jpg",
+    "body": "La temporada de kite en Matanzas arranca en octubre y llega hasta abril. Con vientos del suroeste de 25 a 35 nudos en promedio, la bahía es de clase mundial para kitesurf y windsurf.\n\nEste año se espera el primer Festival Internacional de Kite en la zona, con riders de Chile, Argentina y Brasil. Las inscripciones abren en julio.",
+    "link": "",
+    "linkText": "",
+    "date": "2026-05-01",
+    "createdAt": 1714500000000,
+    "publishedAt": null,
+    "rejectionNote": null
+  },
+  {
+    "id": "s5",
+    "title": "Hotel Mar Blanco: descanso con vista al mar",
+    "category": "lugar",
+    "status": "borrador",
+    "imageUrl": "assets/vida/hotel-mar-blanco.png",
+    "body": "A 150 metros del proyecto, el Hotel Mar Blanco es el lugar perfecto para alojar a tus invitados cuando vengas a conocer tu sitio. Habitaciones con vista directa al Pacífico, desayuno incluido, y un equipo que conoce Matanzas a fondo.",
+    "link": "",
+    "linkText": "",
+    "date": "2026-05-10",
+    "createdAt": 1715300000000,
+    "publishedAt": null,
+    "rejectionNote": null
+  }
+]

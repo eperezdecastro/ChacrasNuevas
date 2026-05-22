@@ -1,0 +1,1063 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vida en Matanzas · Blog — Chacras Nuevas</title>
+  <meta name="description" content="Lugares, restaurantes, deportes y vida cotidiana en Matanzas. El blog de Chacras Nuevas de Matanzas." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+/* ==========================================================
+   DESIGN TOKENS
+   ========================================================== */
+:root {
+  --ed-bg:       #f3ede1;
+  --ed-bg-2:     #e9e0cf;
+  --ed-bg-3:     #faf6ed;
+  --ed-ink:      #1a1a17;
+  --ed-ink-2:    #3d3a32;
+  --ed-muted:    #8a8475;
+  --ed-line:     rgba(26,26,23,0.12);
+  --ed-line-soft:rgba(26,26,23,0.06);
+  --ed-dark:     #14130f;
+  --ed-cream:    #f5efe5;
+  --ed-accent:   #5a6b5a;
+  --ed-accent-2: #b08a5a;
+  --ed-serif: 'Cormorant Garamond','Times New Roman',serif;
+  --ed-sans:  'Inter',system-ui,sans-serif;
+  --ed-mono:  'JetBrains Mono',ui-monospace,monospace;
+  --ed-shadow: 0 24px 60px -20px rgba(20,19,15,0.25);
+  --ed-h2: clamp(28px,4vw,52px);
+}
+
+/* ==========================================================
+   RESET
+   ========================================================== */
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--ed-sans);font-size:clamp(15px,1.05vw,17px);line-height:1.55;color:var(--ed-ink);background:var(--ed-bg);-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+button{font:inherit;cursor:pointer;border:none;background:none;}
+.eyebrow{font-family:var(--ed-mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ed-muted);}
+
+/* ==========================================================
+   BUTTONS
+   ========================================================== */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--ed-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;padding:14px 22px;border:1px solid currentColor;border-radius:999px;color:var(--ed-ink);background:transparent;transition:all .25s ease;}
+.btn:hover{background:var(--ed-ink);color:var(--ed-cream);border-color:var(--ed-ink);}
+.btn.solid{background:var(--ed-ink);color:var(--ed-cream);border-color:var(--ed-ink);}
+.btn.solid:hover{background:transparent;color:var(--ed-ink);}
+.btn.ghost{color:var(--ed-muted);border-color:var(--ed-line);}
+.btn.ghost:hover{background:var(--ed-bg-2);color:var(--ed-ink);border-color:var(--ed-line);}
+.btn.sm{padding:9px 16px;font-size:10px;}
+.btn[disabled]{opacity:.4;cursor:not-allowed;pointer-events:none;}
+.btn .arrow{transition:transform .25s;}
+.btn:hover .arrow{transform:translateX(4px);}
+.btn.wp{display:inline-flex;align-items:center;gap:10px;}
+.btn.wp .pulse{width:8px;height:8px;border-radius:50%;background:#79c267;box-shadow:0 0 0 4px rgba(121,194,103,.25);}
+
+/* ==========================================================
+   NAV
+   ========================================================== */
+.site-nav{position:fixed;top:0;left:0;right:0;z-index:50;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:20px 32px;transition:all .35s ease;color:var(--ed-cream);}
+.site-nav.scrolled{background:var(--ed-bg);color:var(--ed-ink);box-shadow:0 1px 0 var(--ed-line);padding:14px 32px;}
+.site-nav .links{display:flex;gap:28px;font-family:var(--ed-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;}
+.site-nav .links.left{justify-self:start;}
+.site-nav .links.right{justify-self:end;}
+.site-nav .brand img{height:44px;width:auto;filter:invert(1) brightness(1.1);transition:filter .35s,height .35s;}
+.site-nav.scrolled .brand img{filter:none;height:36px;}
+.site-nav .lang{border:1px solid currentColor;padding:5px 11px;border-radius:999px;font-size:10px;}
+.menu-btn{display:none;}
+.menu-open{display:none;}
+
+/* ==========================================================
+   BLOG HERO
+   ========================================================== */
+.blog-hero{position:relative;padding:160px 32px 88px;background:var(--ed-dark);color:var(--ed-cream);overflow:hidden;}
+.blog-hero-bg{position:absolute;inset:0;background-image:url(assets/vida/costanera-sunset.png);background-size:cover;background-position:center;opacity:.3;}
+.blog-hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,19,15,.55) 0%,rgba(20,19,15,.15) 40%,rgba(20,19,15,.65) 100%);z-index:1;}
+.blog-hero-inner{position:relative;z-index:2;max-width:820px;}
+.blog-hero .sub{font-family:var(--ed-mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,239,229,.65);margin-bottom:18px;display:block;}
+.blog-hero h1{font-family:var(--ed-serif);font-weight:400;font-size:clamp(42px,6.5vw,96px);line-height:1.03;letter-spacing:-.02em;margin:0 0 20px;}
+.blog-hero h1 em{font-style:italic;}
+.blog-hero p{font-size:clamp(15px,1.2vw,18px);color:rgba(245,239,229,.82);max-width:36em;margin:0;}
+
+/* ==========================================================
+   FILTER BAR
+   ========================================================== */
+.blog-filter{padding:16px 32px;display:flex;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--ed-line);background:var(--ed-bg);position:sticky;top:57px;z-index:30;align-items:center;}
+.filter-pill{font-family:var(--ed-mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;padding:6px 14px;border-radius:999px;border:1px solid var(--ed-line);background:transparent;color:var(--ed-ink-2);cursor:pointer;transition:all .2s;}
+.filter-pill:hover{border-color:var(--ed-ink);color:var(--ed-ink);}
+.filter-pill.active{background:var(--ed-ink);color:var(--ed-cream);border-color:var(--ed-ink);}
+
+/* ==========================================================
+   BLOG GRID
+   ========================================================== */
+.blog-section{padding:clamp(48px,6vw,80px) clamp(20px,4vw,64px) clamp(60px,8vw,110px);}
+
+/* Featured post */
+.post-featured{display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(24px,4.5vw,72px);align-items:center;padding-bottom:clamp(40px,5vw,68px);margin-bottom:clamp(40px,5vw,68px);border-bottom:1px solid var(--ed-line);cursor:pointer;}
+.post-featured .img-wrap{position:relative;aspect-ratio:3/2;overflow:hidden;border-radius:2px;background:var(--ed-bg-2);}
+.post-featured .img-wrap .bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .8s cubic-bezier(.2,.7,.2,1);}
+.post-featured:hover .img-wrap .bg{transform:scale(1.04);}
+.post-featured .pf-date{font-family:var(--ed-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ed-muted);display:block;margin-bottom:10px;}
+.post-featured h2{font-family:var(--ed-serif);font-style:italic;font-weight:400;font-size:clamp(26px,3.2vw,44px);line-height:1.1;letter-spacing:-.015em;margin:12px 0 16px;}
+.post-featured .pf-excerpt{font-size:clamp(14px,1.05vw,16px);line-height:1.65;color:var(--ed-ink-2);margin:0 0 24px;max-width:36em;}
+.post-featured .pf-more{font-family:var(--ed-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ed-ink);display:inline-flex;align-items:center;gap:6px;}
+.post-featured .pf-more .arr{transition:transform .2s;}
+.post-featured:hover .pf-more .arr{transform:translateX(5px);}
+
+/* Post cards grid */
+.posts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.5vw,30px);}
+.post-card{display:flex;flex-direction:column;border:1px solid var(--ed-line-soft);border-radius:2px;overflow:hidden;background:var(--ed-bg-3);transition:all .3s ease;cursor:pointer;}
+.post-card:hover{transform:translateY(-4px);box-shadow:var(--ed-shadow);}
+.post-card .cover{position:relative;aspect-ratio:16/10;background:var(--ed-bg-2);overflow:hidden;}
+.post-card .cover .bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .7s cubic-bezier(.2,.7,.2,1);}
+.post-card:hover .cover .bg{transform:scale(1.06);}
+.post-card .cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,19,15,0) 50%,rgba(20,19,15,.55) 100%);pointer-events:none;}
+.post-card .cat-badge{position:absolute;bottom:12px;left:12px;z-index:2;font-family:var(--ed-mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:rgba(245,239,229,.92);color:var(--ed-ink);}
+.post-card .card-body{padding:20px 22px 22px;flex:1;display:flex;flex-direction:column;}
+.post-card .card-date{font-family:var(--ed-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ed-muted);margin-bottom:8px;}
+.post-card .card-title{font-family:var(--ed-serif);font-style:italic;font-weight:400;font-size:clamp(18px,1.8vw,24px);line-height:1.15;letter-spacing:-.01em;margin:0 0 10px;flex:1;}
+.post-card .card-excerpt{font-size:13px;line-height:1.6;color:var(--ed-ink-2);margin:0 0 16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+.post-card .card-readmore{font-family:var(--ed-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ed-ink);display:inline-flex;align-items:center;gap:6px;margin-top:auto;}
+.post-card .card-readmore .arr{transition:transform .2s;}
+.post-card:hover .card-readmore .arr{transform:translateX(4px);}
+
+/* Empty state */
+.empty-state{text-align:center;padding:80px 32px;}
+.empty-state h3{font-family:var(--ed-serif);font-style:italic;font-size:32px;margin:14px 0 8px;color:var(--ed-ink-2);}
+.empty-state p{color:var(--ed-muted);font-size:14px;}
+
+/* ==========================================================
+   ADMIN BAR
+   ========================================================== */
+.admin-top{position:fixed;top:0;left:0;right:0;z-index:90;background:var(--ed-dark);color:var(--ed-cream);padding:0 28px;display:flex;align-items:center;gap:20px;height:56px;border-bottom:1px solid rgba(245,239,229,.08);}
+.admin-top .logo{font-family:var(--ed-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,239,229,.6);}
+.admin-top .logo strong{color:var(--ed-cream);}
+.admin-top .sep{color:rgba(245,239,229,.2);}
+.admin-top-right{margin-left:auto;display:flex;align-items:center;gap:10px;}
+.new-btn{font-family:var(--ed-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;padding:8px 18px;border-radius:999px;background:#79c267;color:#14130f;border:none;cursor:pointer;transition:opacity .2s;}
+.new-btn:hover{opacity:.85;}
+.exit-btn{font-family:var(--ed-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,239,229,.55);cursor:pointer;padding:8px 14px;border-radius:999px;border:1px solid rgba(245,239,229,.15);transition:all .2s;}
+.exit-btn:hover{color:var(--ed-cream);border-color:rgba(245,239,229,.4);}
+
+/* Admin content */
+.admin-content{padding:76px 32px 60px;min-height:100vh;background:var(--ed-bg);}
+.admin-tabs{display:flex;gap:0;border-bottom:1px solid var(--ed-line);margin-bottom:28px;}
+.admin-tab{font-family:var(--ed-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding:14px 22px;color:var(--ed-muted);border-bottom:2px solid transparent;margin-bottom:-1px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:8px;background:none;border-left:none;border-right:none;border-top:none;}
+.admin-tab:hover{color:var(--ed-ink);}
+.admin-tab.active{color:var(--ed-ink);border-bottom-color:var(--ed-ink);}
+.tab-badge{font-size:9px;background:rgba(214,173,101,.85);color:#14130f;border-radius:999px;padding:2px 7px;letter-spacing:.06em;}
+.tab-badge.green{background:rgba(121,194,103,.85);}
+
+/* Admin list */
+.admin-list{display:flex;flex-direction:column;gap:3px;}
+.admin-post{display:grid;grid-template-columns:72px 1fr auto;gap:16px;align-items:center;padding:14px 18px;background:var(--ed-bg-3);border:1px solid var(--ed-line-soft);border-radius:2px;transition:background .2s;}
+.admin-post:hover{background:#fff;}
+.admin-thumb{aspect-ratio:4/3;background:var(--ed-bg-2);border-radius:2px;background-size:cover;background-position:center;flex-shrink:0;}
+.admin-info{min-width:0;}
+.admin-post-title{font-family:var(--ed-serif);font-style:italic;font-size:17px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:5px;}
+.admin-post-meta{font-family:var(--ed-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ed-muted);display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+.s-dot{width:7px;height:7px;border-radius:50%;display:inline-block;flex-shrink:0;}
+.s-dot.publicado{background:#79c267;}
+.s-dot.revision{background:#d6ad65;}
+.s-dot.borrador{background:#b3b3ad;}
+.admin-actions{display:flex;gap:6px;flex-shrink:0;}
+.act-btn{font-family:var(--ed-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;border-radius:999px;border:1px solid var(--ed-line);color:var(--ed-ink-2);background:transparent;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.act-btn:hover{background:var(--ed-ink);color:var(--ed-cream);border-color:var(--ed-ink);}
+.act-btn.approve{border-color:#3a7a2a;color:#3a7a2a;}
+.act-btn.approve:hover{background:#3a7a2a;color:#fff;border-color:#3a7a2a;}
+.act-btn.reject{border-color:#b03030;color:#b03030;}
+.act-btn.reject:hover{background:#b03030;color:#fff;border-color:#b03030;}
+.act-btn.del{border-color:#b03030;color:#b03030;}
+.act-btn.del:hover{background:#b03030;color:#fff;border-color:#b03030;}
+.admin-empty{padding:48px;text-align:center;color:var(--ed-muted);font-family:var(--ed-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;}
+
+/* Note warning */
+.rejection-note{font-size:11px;color:#b03030;margin-top:3px;font-style:italic;}
+
+/* ==========================================================
+   OVERLAY MODAL BASE
+   ========================================================== */
+.overlay{position:fixed;inset:0;z-index:100;background:rgba(20,19,15,.72);backdrop-filter:blur(5px);display:flex;align-items:flex-start;justify-content:center;padding:20px;overflow-y:auto;}
+.overlay-inner{margin:auto;width:100%;}
+
+/* ==========================================================
+   POST EDITOR
+   ========================================================== */
+.editor-card{background:var(--ed-bg);width:100%;max-width:700px;border-radius:4px;box-shadow:0 40px 100px -20px rgba(0,0,0,.6);margin:auto;}
+.editor-head{display:flex;align-items:center;justify-content:space-between;padding:22px 28px 0;}
+.editor-head h3{font-family:var(--ed-serif);font-style:italic;font-size:28px;margin:0;line-height:1.1;}
+.close-btn{font-size:24px;color:var(--ed-muted);cursor:pointer;padding:4px;line-height:1;}
+.editor-form{padding:22px 28px;display:grid;gap:16px;}
+.field{display:flex;flex-direction:column;gap:6px;}
+.field label{font-family:var(--ed-mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ed-muted);}
+.field input,.field select,.field textarea{background:transparent;border:none;border-bottom:1px solid var(--ed-line);padding:10px 0;font-family:var(--ed-sans);font-size:15px;outline:none;color:var(--ed-ink);width:100%;transition:border-color .2s;}
+.field input:focus,.field select:focus,.field textarea:focus{border-bottom-color:var(--ed-ink);}
+.field textarea{resize:vertical;min-height:130px;line-height:1.6;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.img-preview-box{margin-top:8px;border-radius:2px;overflow:hidden;background:var(--ed-bg-2);aspect-ratio:16/9;background-size:cover;background-position:center;border:1px solid var(--ed-line-soft);}
+.img-placeholder{height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--ed-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ed-muted);}
+.help-text{font-size:12px;color:var(--ed-muted);margin-top:3px;line-height:1.5;}
+.editor-foot{padding:18px 28px 26px;display:flex;justify-content:flex-end;gap:10px;border-top:1px solid var(--ed-line);flex-wrap:wrap;background:var(--ed-bg-3);border-radius:0 0 4px 4px;}
+
+/* ==========================================================
+   POST PREVIEW / APPROVAL MODAL
+   ========================================================== */
+.preview-card{background:var(--ed-bg);width:100%;max-width:800px;border-radius:4px;box-shadow:0 40px 100px -20px rgba(0,0,0,.6);margin:auto;overflow:hidden;}
+.preview-card-head{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid var(--ed-line);background:var(--ed-bg-3);}
+.preview-card-head h4{font-family:var(--ed-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ed-muted);margin:0;}
+.preview-content{padding:32px;}
+.preview-post-img{aspect-ratio:16/10;background-size:cover;background-position:center;border-radius:2px;margin-bottom:28px;background-color:var(--ed-bg-2);}
+.preview-title{font-family:var(--ed-serif);font-style:italic;font-size:clamp(26px,4vw,42px);line-height:1.1;letter-spacing:-.015em;margin:8px 0 18px;}
+.preview-date{font-family:var(--ed-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ed-muted);margin-bottom:6px;display:block;}
+.preview-body-text{font-size:16px;line-height:1.72;color:var(--ed-ink-2);white-space:pre-line;}
+.preview-ext-link{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-family:var(--ed-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ed-accent);border-bottom:1px solid var(--ed-accent);padding-bottom:2px;}
+.preview-card-foot{padding:18px 24px;border-top:1px solid var(--ed-line);display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;background:var(--ed-bg-3);}
+
+/* Reject note modal */
+.reject-card{background:var(--ed-bg);max-width:440px;width:100%;border-radius:4px;padding:32px;margin:auto;box-shadow:0 30px 80px -20px rgba(0,0,0,.5);}
+.reject-card h4{font-family:var(--ed-serif);font-style:italic;font-size:26px;margin:10px 0 6px;}
+
+/* Password modal */
+.pw-card{background:var(--ed-bg);max-width:380px;width:100%;border-radius:4px;padding:40px 32px;margin:auto;box-shadow:0 30px 80px -20px rgba(0,0,0,.5);}
+.pw-card h3{font-family:var(--ed-serif);font-style:italic;font-size:32px;margin:10px 0 22px;}
+.pw-error{font-size:13px;color:#b03030;margin-top:6px;}
+
+/* ==========================================================
+   WP FAB + FOOTER
+   ========================================================== */
+.wp-fab{position:fixed;bottom:24px;right:24px;z-index:40;background:#2a302a;color:var(--ed-cream);border-radius:999px;padding:14px 22px;font-family:var(--ed-sans);font-size:12px;letter-spacing:.14em;text-transform:uppercase;display:inline-flex;align-items:center;gap:10px;box-shadow:0 18px 40px -12px rgba(0,0,0,.4);transition:transform .2s;}
+.wp-fab:hover{transform:translateY(-2px);}
+.wp-fab .pulse{width:8px;height:8px;border-radius:50%;background:#79c267;box-shadow:0 0 0 4px rgba(121,194,103,.28);}
+
+.site-foot{background:var(--ed-dark);color:var(--ed-cream);padding:60px 32px 28px;}
+.site-foot .top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;border-bottom:1px solid rgba(245,239,229,.12);padding-bottom:40px;margin-bottom:22px;}
+.site-foot img{height:48px;filter:invert(1) brightness(1.05);}
+.site-foot h4{font-family:var(--ed-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,239,229,.55);margin:0 0 14px;font-weight:400;}
+.site-foot ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px;}
+.site-foot ul li{font-size:13px;color:rgba(245,239,229,.8);}
+.site-foot .bottom{display:flex;justify-content:space-between;align-items:center;font-family:var(--ed-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,239,229,.38);}
+.admin-trigger{background:transparent;border:none;cursor:pointer;font-family:var(--ed-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,239,229,.2);padding:4px 8px;border-radius:2px;transition:color .25s;}
+.admin-trigger:hover{color:rgba(245,239,229,.5);}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width:980px) {
+  .site-nav{grid-template-columns:1fr auto;padding:14px 20px;}
+  .site-nav .links{display:none;}
+  .menu-btn{display:flex;align-items:center;justify-content:center;width:44px;height:44px;color:inherit;justify-self:end;}
+  .menu-open{display:flex !important;flex-direction:column;position:fixed;inset:0;background:var(--ed-bg);padding:80px 32px;gap:18px;align-items:center;justify-content:center;font-size:18px;letter-spacing:.12em;z-index:60;color:var(--ed-ink);}
+  .blog-hero{padding:120px 20px 60px;}
+  .blog-filter{padding:12px 20px;top:52px;}
+  .blog-section{padding:36px 20px 60px;}
+  .post-featured{grid-template-columns:1fr;}
+  .posts-grid{grid-template-columns:1fr 1fr;}
+  .field-row{grid-template-columns:1fr;}
+  .admin-post{grid-template-columns:60px 1fr;row-gap:10px;}
+  .admin-actions{grid-column:1/-1;padding-left:76px;flex-wrap:wrap;}
+  .site-foot .top{grid-template-columns:1fr 1fr;}
+  .wp-fab{bottom:16px;right:16px;padding:12px 18px;font-size:11px;}
+}
+@media (max-width:640px) {
+  .posts-grid{grid-template-columns:1fr;}
+  .site-foot .top{grid-template-columns:1fr;}
+  .admin-content{padding:68px 16px 60px;}
+  .admin-top{padding:0 16px;}
+  .admin-top .logo{font-size:10px;}
+  .editor-head,.editor-form,.editor-foot{padding-left:20px;padding-right:20px;}
+  .preview-content{padding:20px;}
+  .preview-card-head,.preview-card-foot{padding:14px 20px;}
+}
+  </style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel">
+/*
+ * ============================================================
+ *  VIDA EN MATANZAS — Blog CMS
+ *  Contraseña de administrador: chacras2026
+ *  Producción: lee data/posts.json (servido por Netlify)
+ *  Fallback local: localStorage key "cnm-blog-v1"
+ *  Para publicar cambios: exportar posts.json desde admin
+ *  y commitear en GitHub — Netlify redespliega automáticamente.
+ * ============================================================
+ */
+const { useState, useEffect, useRef, useMemo } = React;
+
+const WA_URL     = "https://wa.me/56974300513?text=Me%20interesa%20saber%20m%C3%A1s%20de%20Chacras%20Nuevas";
+const ADMIN_PW   = "chacras2026";
+const STORAGE_KEY = "cnm-blog-v1";
+
+const CATS = [
+  { id:"lugar",       label:"Lugar",       color:"#4a6240", bg:"rgba(90,107,90,.13)"   },
+  { id:"restaurante", label:"Restaurante",  color:"#7a5020", bg:"rgba(176,138,90,.16)"  },
+  { id:"evento",      label:"Evento",       color:"#14130f", bg:"rgba(26,26,23,.09)"    },
+  { id:"noticia",     label:"Noticia",      color:"#2a4060", bg:"rgba(42,64,96,.12)"    },
+  { id:"deporte",     label:"Deporte",      color:"#503010", bg:"rgba(106,80,38,.13)"   },
+  { id:"vida",        label:"Vida",         color:"#4a3a28", bg:"rgba(122,106,90,.13)"  },
+];
+
+const SAMPLE_POSTS = [
+  {
+    id:"s1", title:"La caleta al atardecer: el corazón de Matanzas",
+    category:"lugar", status:"publicado",
+    imageUrl:"assets/vida/caleta-sunset.jpg",
+    body:"La caleta de pescadores de Matanzas es mucho más que un muelle. Al atardecer, cuando los botes vuelven y la luz del Pacífico tiñe el cielo de naranja, el lugar se convierte en uno de los más bellos del litoral central.\n\nEn temporada alta los pescadores sacan corbina, reineta y erizo fresco. Vale la pena llegar temprano para comprar directo del bote. La caleta tiene también un pequeño mercado donde venden algas y mariscos secos.",
+    link:"https://maps.google.com/?q=caleta+matanzas+chile", linkText:"Ver en Google Maps",
+    date:"2026-04-15", createdAt:1713000000000, publishedAt:1713100000000, rejectionNote:null
+  },
+  {
+    id:"s2", title:"La Pizzería: masa artesanal y vista al Pacífico",
+    category:"restaurante", status:"publicado",
+    imageUrl:"assets/vida/la-pizzeria.png",
+    body:"Entre tablas de surf y mapas de viento, La Pizzería de Matanzas se ha convertido en el restaurante de referencia del pueblo. La masa es artesanal, el horno de leña trabaja hasta tarde, y la terraza con vista al mar hace que la espera valga la pena.\n\nNo aceptan reservas. Llega temprano en temporada alta. La pizza de mariscos con algas locales es la recomendación de la casa.",
+    link:"", linkText:"",
+    date:"2026-03-28", createdAt:1711600000000, publishedAt:1711700000000, rejectionNote:null
+  },
+  {
+    id:"s3", title:"Bikepark OMZ: singletracks entre pinos costeros",
+    category:"deporte", status:"publicado",
+    imageUrl:"assets/vida/bikepark-omz.png",
+    body:"A 500 metros del proyecto, el Bikepark Olas de Matanzas tiene uno de los trazados más divertidos del litoral central. Bajadas entre pinos, saltos medios y un pumptrack para calentar.\n\nSe puede rentar bicicleta en el lugar. El panorama del mar entre los árboles mientras bajas no tiene precio. Abierto todo el año; acceso libre los fines de semana.",
+    link:"", linkText:"",
+    date:"2026-03-10", createdAt:1710100000000, publishedAt:1710200000000, rejectionNote:null
+  },
+  {
+    id:"s4", title:"Temporada de kite 2026: lo que viene este verano",
+    category:"evento", status:"revision",
+    imageUrl:"assets/vida/persona-mar.jpg",
+    body:"La temporada de kite en Matanzas arranca en octubre y llega hasta abril. Con vientos del suroeste de 25 a 35 nudos en promedio, la bahía es de clase mundial para kitesurf y windsurf.\n\nEste año se espera el primer Festival Internacional de Kite en la zona, con riders de Chile, Argentina y Brasil. Las inscripciones abren en julio.",
+    link:"", linkText:"",
+    date:"2026-05-01", createdAt:1714500000000, publishedAt:null, rejectionNote:null
+  },
+  {
+    id:"s5", title:"Hotel Mar Blanco: descanso con vista al mar",
+    category:"lugar", status:"borrador",
+    imageUrl:"assets/vida/hotel-mar-blanco.png",
+    body:"A 150 metros del proyecto, el Hotel Mar Blanco es el lugar perfecto para alojar a tus invitados cuando vengas a conocer tu sitio. Habitaciones con vista directa al Pacífico, desayuno incluido, y un equipo que conoce Matanzas a fondo.",
+    link:"", linkText:"",
+    date:"2026-05-10", createdAt:1715300000000, publishedAt:null, rejectionNote:null
+  },
+];
+
+/* ----------------------------------------------------------
+   HELPERS
+   ---------------------------------------------------------- */
+function genId() { return "p" + Date.now().toString(36) + Math.random().toString(36).slice(2,5); }
+
+/* Carga asíncrona: primero data/posts.json (Netlify),
+   fallback a localStorage (admin/dev local), fallback a SAMPLE_POSTS */
+async function fetchPosts() {
+  try {
+    const res = await fetch("data/posts.json?_=" + Date.now());
+    if (res.ok) {
+      const p = await res.json();
+      if (Array.isArray(p) && p.length) return p;
+    }
+  } catch {}
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) { const p = JSON.parse(raw); if (Array.isArray(p) && p.length) return p; }
+  } catch {}
+  return SAMPLE_POSTS;
+}
+function savePosts(posts) {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(posts)); } catch {}
+}
+function exportPostsJson(posts) {
+  const json = JSON.stringify(posts, null, 2);
+  const blob = new Blob([json], { type: "application/json" });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement("a");
+  a.href = url; a.download = "posts.json"; a.click();
+  URL.revokeObjectURL(url);
+}
+function catInfo(id) { return CATS.find(c => c.id === id) || { label:id, color:"#8a8475", bg:"rgba(138,132,117,.1)" }; }
+function fmtDate(s) {
+  if (!s) return "";
+  try { return new Date(s + "T12:00:00").toLocaleDateString("es-CL",{day:"numeric",month:"long",year:"numeric"}); } catch { return s; }
+}
+function useEscKey(fn) {
+  useEffect(() => {
+    const h = (e) => { if (e.key === "Escape") fn(); };
+    window.addEventListener("keydown", h);
+    return () => window.removeEventListener("keydown", h);
+  }, [fn]);
+}
+
+/* ----------------------------------------------------------
+   CAT BADGE
+   ---------------------------------------------------------- */
+function CatBadge({ cat, style:extra }) {
+  const c = catInfo(cat);
+  return (
+    <span style={{fontFamily:"var(--ed-mono)",fontSize:"9.5px",letterSpacing:".2em",textTransform:"uppercase",
+      padding:"5px 10px",borderRadius:"999px",background:c.bg,color:c.color,...extra}}>
+      {c.label}
+    </span>
+  );
+}
+
+/* ----------------------------------------------------------
+   SITE NAV (public)
+   ---------------------------------------------------------- */
+function SiteNav() {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    const fn = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", fn); fn();
+    return () => window.removeEventListener("scroll", fn);
+  }, []);
+  return (
+    <>
+      <nav className={"site-nav" + (scrolled ? " scrolled" : "")}>
+        <div className="links left">
+          <a href="Editorial.html#proyecto">Proyecto</a>
+          <a href="Editorial.html#zona">La Zona</a>
+          <a href="Blog.html" style={{opacity:0.5, pointerEvents:"none"}}>Vida en Matanzas</a>
+        </div>
+        <a className="brand" href="Editorial.html">
+          <img src="assets/logo-chacras.png" alt="Chacras Nuevas de Matanzas" />
+        </a>
+        <div className="links right">
+          <a href="MasterPlan.html">Master Plan</a>
+          <a href="Editorial.html#contacto">Contacto</a>
+          <span className="lang">ES · EN</span>
+        </div>
+        <button className="menu-btn" onClick={() => setOpen(true)} aria-label="Menú">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="17" x2="21" y2="17"/>
+          </svg>
+        </button>
+      </nav>
+      {open && (
+        <div className="menu-open" onClick={() => setOpen(false)}>
+          <a href="Editorial.html">Inicio</a>
+          <a href="Editorial.html#proyecto">Proyecto</a>
+          <a href="Editorial.html#zona">La Zona</a>
+          <a href="MasterPlan.html">Master Plan</a>
+          <a href="Editorial.html#contacto">Contacto</a>
+          <button onClick={() => setOpen(false)} style={{marginTop:24,fontSize:12}}>Cerrar ✕</button>
+        </div>
+      )}
+    </>
+  );
+}
+
+/* ----------------------------------------------------------
+   BLOG HERO
+   ---------------------------------------------------------- */
+function BlogHero() {
+  return (
+    <header className="blog-hero">
+      <div className="blog-hero-overlay"></div>
+      <div className="blog-hero-bg"></div>
+      <div className="blog-hero-inner">
+        <span className="sub">Vida en Matanzas · Blog</span>
+        <h1>Lugares, gente<br/>y <em>vida costera</em>.</h1>
+        <p>Restaurantes, deportes, eventos y todo lo que hace especial a Matanzas. Una guía editorial del litoral central.</p>
+      </div>
+    </header>
+  );
+}
+
+/* ----------------------------------------------------------
+   FEATURED POST (first published)
+   ---------------------------------------------------------- */
+function FeaturedPost({ post, onClick }) {
+  return (
+    <div className="post-featured" onClick={onClick} role="button" tabIndex={0}
+      onKeyDown={e => e.key==="Enter" && onClick()}>
+      <div className="img-wrap">
+        <div className="bg" style={{backgroundImage:`url(${post.imageUrl})`}}></div>
+      </div>
+      <div>
+        <span className="pf-date">{fmtDate(post.date)}</span>
+        <CatBadge cat={post.category} />
+        <h2>{post.title}</h2>
+        <p className="pf-excerpt">{post.body.split("\n")[0]}</p>
+        <span className="pf-more">Leer entrada <span className="arr">→</span></span>
+      </div>
+    </div>
+  );
+}
+
+/* ----------------------------------------------------------
+   POST CARD
+   ---------------------------------------------------------- */
+function PostCard({ post, onClick }) {
+  return (
+    <article className="post-card" onClick={onClick} role="button" tabIndex={0}
+      onKeyDown={e => e.key==="Enter" && onClick()}>
+      <div className="cover">
+        <div className="bg" style={{backgroundImage:`url(${post.imageUrl})`}}></div>
+        <span className="cat-badge">{catInfo(post.category).label}</span>
+      </div>
+      <div className="card-body">
+        <span className="card-date">{fmtDate(post.date)}</span>
+        <h3 className="card-title">{post.title}</h3>
+        <p className="card-excerpt">{post.body.replace(/\n+/g," ")}</p>
+        <span className="card-readmore">Leer más <span className="arr">→</span></span>
+      </div>
+    </article>
+  );
+}
+
+/* ----------------------------------------------------------
+   POST VIEW MODAL (public reading)
+   ---------------------------------------------------------- */
+function PostViewModal({ post, onClose }) {
+  useEscKey(onClose);
+  const c = catInfo(post.category);
+  return (
+    <div className="overlay" onClick={onClose}>
+      <div className="preview-card overlay-inner" style={{maxWidth:780}} onClick={e => e.stopPropagation()}>
+        <div className="preview-card-head">
+          <h4>Entrada · {c.label}</h4>
+          <button className="close-btn" onClick={onClose}>×</button>
+        </div>
+        <div className="preview-content">
+          {post.imageUrl && <div className="preview-post-img" style={{backgroundImage:`url(${post.imageUrl})`}}></div>}
+          <CatBadge cat={post.category} />
+          <span className="preview-date" style={{display:"block",marginTop:8}}>{fmtDate(post.date)}</span>
+          <h2 className="preview-title">{post.title}</h2>
+          <div className="preview-body-text">{post.body}</div>
+          {post.link && (
+            <a href={post.link} target="_blank" rel="noopener noreferrer" className="preview-ext-link">
+              {post.linkText || post.link} ↗
+            </a>
+          )}
+        </div>
+        <div className="preview-card-foot">
+          <button className="btn ghost sm" onClick={onClose}>Cerrar</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ----------------------------------------------------------
+   EDITOR MODAL (create / edit)
+   ---------------------------------------------------------- */
+function EditorModal({ post: initial, onSave, onClose }) {
+  const isNew = !initial?.id;
+  const [form, setForm] = useState({
+    title: initial?.title || "",
+    category: initial?.category || "lugar",
+    imageUrl: initial?.imageUrl || "",
+    body: initial?.body || "",
+    link: initial?.link || "",
+    linkText: initial?.linkText || "",
+    date: initial?.date || new Date().toISOString().split("T")[0],
+  });
+  const set = (k, v) => setForm(f => ({ ...f, [k]: v }));
+  const valid = form.title.trim().length > 0 && form.body.trim().length > 0;
+
+  useEscKey(onClose);
+
+  const handleSave = (newStatus) => {
+    if (!valid) return;
+    onSave({ ...(initial || {}), ...form, status: newStatus });
+  };
+
+  return (
+    <div className="overlay" onClick={onClose}>
+      <div className="editor-card overlay-inner" onClick={e => e.stopPropagation()}>
+        <div className="editor-head">
+          <h3>{isNew ? "Nueva entrada" : "Editar entrada"}</h3>
+          <button className="close-btn" onClick={onClose}>×</button>
+        </div>
+        <div className="editor-form">
+
+          <div className="field">
+            <label>Título *</label>
+            <input value={form.title} onChange={e => set("title", e.target.value)}
+              placeholder="Ej: La mejor playa de Matanzas para kite" maxLength={120} />
+          </div>
+
+          <div className="field-row">
+            <div className="field">
+              <label>Categoría</label>
+              <select value={form.category} onChange={e => set("category", e.target.value)}>
+                {CATS.map(c => <option key={c.id} value={c.id}>{c.label}</option>)}
+              </select>
+            </div>
+            <div className="field">
+              <label>Fecha</label>
+              <input type="date" value={form.date} onChange={e => set("date", e.target.value)} />
+            </div>
+          </div>
+
+          <div className="field">
+            <label>URL de la imagen</label>
+            <input value={form.imageUrl} onChange={e => set("imageUrl", e.target.value)}
+              placeholder="https://... o ruta local: assets/vida/caleta-sunset.jpg" />
+            <div className="img-preview-box" style={form.imageUrl ? {backgroundImage:`url(${form.imageUrl})`} : {}}>
+              {!form.imageUrl && <div className="img-placeholder">Sin imagen · pega una URL arriba</div>}
+            </div>
+            <span className="help-text">Puedes usar una URL externa (https://...) o una ruta local de la carpeta assets/.</span>
+          </div>
+
+          <div className="field">
+            <label>Texto *</label>
+            <textarea value={form.body} onChange={e => set("body", e.target.value)} rows={6}
+              placeholder="Escribe el contenido de la entrada. Separa párrafos con líneas en blanco para que aparezcan correctamente." />
+            <span className="help-text">Una línea en blanco = nuevo párrafo.</span>
+          </div>
+
+          <div className="field-row">
+            <div className="field">
+              <label>Link externo (opcional)</label>
+              <input value={form.link} onChange={e => set("link", e.target.value)}
+                placeholder="https://..." />
+            </div>
+            <div className="field">
+              <label>Texto del link</label>
+              <input value={form.linkText} onChange={e => set("linkText", e.target.value)}
+                placeholder="Ej: Ver en Google Maps" />
+            </div>
+          </div>
+
+        </div>
+        <div className="editor-foot">
+          <button className="btn ghost sm" onClick={onClose}>Cancelar</button>
+          <button className="btn sm" disabled={!valid} onClick={() => handleSave("borrador")}>
+            Guardar borrador
+          </button>
+          <button className="btn solid sm" disabled={!valid} onClick={() => handleSave("revision")}>
+            Enviar a revisión →
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ----------------------------------------------------------
+   APPROVAL MODAL (preview + approve / reject)
+   ---------------------------------------------------------- */
+function ApprovalModal({ post, onApprove, onReject, onClose }) {
+  const [rejectMode, setRejectMode] = useState(false);
+  const [note, setNote] = useState("");
+  useEscKey(onClose);
+  const c = catInfo(post.category);
+
+  if (rejectMode) {
+    return (
+      <div className="overlay" onClick={onClose}>
+        <div className="reject-card overlay-inner" onClick={e => e.stopPropagation()}>
+          <span className="eyebrow">Devolver a borrador</span>
+          <h4>¿Por qué devuelves<br/>esta entrada?</h4>
+          <p style={{fontSize:13,color:"var(--ed-ink-2)",margin:"0 0 14px",lineHeight:1.6}}>
+            Opcional. Esta nota solo la verás tú en el listado de borradores.
+          </p>
+          <textarea value={note} onChange={e => setNote(e.target.value)} rows={3}
+            placeholder="Ej: Falta revisar el horario del restaurante..."
+            style={{width:"100%",background:"transparent",border:"none",borderBottom:"1px solid var(--ed-line)",
+              padding:"10px 0",fontFamily:"var(--ed-sans)",fontSize:14,outline:"none",resize:"vertical",lineHeight:1.5}} />
+          <div style={{display:"flex",gap:10,marginTop:18,justifyContent:"flex-end"}}>
+            <button className="btn ghost sm" onClick={() => setRejectMode(false)}>Atrás</button>
+            <button className="act-btn reject" onClick={() => onReject(note)}>Confirmar devolución</button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="overlay" onClick={onClose}>
+      <div className="preview-card overlay-inner" onClick={e => e.stopPropagation()}>
+        <div className="preview-card-head">
+          <h4>Vista previa — ¿Apruebas esta entrada?</h4>
+          <button className="close-btn" onClick={onClose}>×</button>
+        </div>
+        <div className="preview-content">
+          {post.imageUrl && <div className="preview-post-img" style={{backgroundImage:`url(${post.imageUrl})`}}></div>}
+          <CatBadge cat={post.category} />
+          <span className="preview-date" style={{display:"block",marginTop:8}}>{fmtDate(post.date)}</span>
+          <h2 className="preview-title">{post.title}</h2>
+          <div className="preview-body-text">{post.body}</div>
+          {post.link && (
+            <a href={post.link} target="_blank" rel="noopener noreferrer" className="preview-ext-link">
+              {post.linkText || post.link} ↗
+            </a>
+          )}
+        </div>
+        <div className="preview-card-foot">
+          <button className="btn ghost sm" onClick={onClose}>Cerrar</button>
+          <button className="act-btn reject" onClick={() => setRejectMode(true)}>Devolver a borrador</button>
+          <button className="act-btn approve" onClick={onApprove}>Aprobar y publicar ✓</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ----------------------------------------------------------
+   PASSWORD MODAL
+   ---------------------------------------------------------- */
+function PasswordModal({ onSuccess, onClose }) {
+  const [pw, setPw] = useState("");
+  const [err, setErr] = useState(false);
+  const ref = useRef(null);
+  useEscKey(onClose);
+  useEffect(() => { setTimeout(() => ref.current?.focus(), 80); }, []);
+
+  const submit = (e) => {
+    e.preventDefault();
+    if (pw === ADMIN_PW) { onSuccess(); }
+    else { setErr(true); setPw(""); }
+  };
+
+  return (
+    <div className="overlay" onClick={onClose}>
+      <div className="pw-card overlay-inner" onClick={e => e.stopPropagation()}>
+        <span className="eyebrow">Panel de administración</span>
+        <h3>Acceso<br/><em>restringido</em>.</h3>
+        <form onSubmit={submit} style={{display:"grid",gap:10}}>
+          <input ref={ref} type="password" value={pw}
+            onChange={e => { setPw(e.target.value); setErr(false); }}
+            placeholder="Contraseña"
+            style={{background:"transparent",border:"none",borderBottom:`1px solid ${err?"#b03030":"var(--ed-line)"}`,
+              padding:"12px 0",fontFamily:"var(--ed-sans)",fontSize:15,outline:"none",color:"var(--ed-ink)"}} />
+          {err && <p className="pw-error">Contraseña incorrecta.</p>}
+          <div style={{display:"flex",gap:10,justifyContent:"flex-end",marginTop:10}}>
+            <button type="button" className="btn ghost sm" onClick={onClose}>Cancelar</button>
+            <button type="submit" className="btn solid sm">Entrar →</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+/* ----------------------------------------------------------
+   ADMIN PANEL
+   ---------------------------------------------------------- */
+function AdminPanel({ posts, setPosts, onExit }) {
+  const [tab, setTab] = useState("revision");
+  const [editing, setEditing] = useState(null);
+  const [approving, setApproving] = useState(null);
+
+  const byStatus = s => [...posts].filter(p => p.status === s)
+    .sort((a,b) => (b.createdAt||0)-(a.createdAt||0));
+  const revision  = byStatus("revision");
+  const borradores = byStatus("borrador");
+  const publicados = byStatus("publicado");
+  const currentList = tab === "revision" ? revision : tab === "borrador" ? borradores : publicados;
+
+  const mutate = (id, changes) =>
+    setPosts(prev => prev.map(p => p.id === id ? { ...p, ...changes } : p));
+
+  const handleSave = (formData) => {
+    if (formData.id) {
+      mutate(formData.id, { ...formData, updatedAt: Date.now() });
+    } else {
+      const newPost = { ...formData, id: genId(), createdAt: Date.now(), publishedAt: null };
+      setPosts(prev => [newPost, ...prev]);
+    }
+    setEditing(null);
+  };
+
+  const del = (id) => {
+    if (!window.confirm("¿Eliminar esta entrada? No se puede deshacer.")) return;
+    setPosts(prev => prev.filter(p => p.id !== id));
+  };
+
+  const tabDefs = [
+    { key:"revision",  label:"Por revisar",  count: revision.length,   badgeCls:"" },
+    { key:"borrador",  label:"Borradores",   count: borradores.length, badgeCls:"" },
+    { key:"publicado", label:"Publicadas",   count: publicados.length, badgeCls:"green" },
+  ];
+
+  const statusLabel = { publicado:"Publicada", revision:"En revisión", borrador:"Borrador" };
+
+  return (
+    <>
+      <div className="admin-top">
+        <span className="logo">Blog <strong>Vida en Matanzas</strong></span>
+        <span className="sep">·</span>
+        <span style={{fontFamily:"var(--ed-mono)",fontSize:"10px",letterSpacing:".14em",textTransform:"uppercase",color:"rgba(245,239,229,.38)"}}>
+          {posts.length} entradas · {publicados.length} publicadas
+        </span>
+        <div className="admin-top-right">
+          <button className="new-btn" onClick={() => setEditing({})}>+ Nueva entrada</button>
+          <button className="exit-btn"
+            style={{background:"rgba(245,239,229,.07)",borderColor:"rgba(245,239,229,.18)"}}
+            onClick={() => exportPostsJson(posts)}
+            title="Descarga posts.json · commitea en GitHub para publicar en Netlify">
+            ↓ Exportar posts.json
+          </button>
+          <button className="exit-btn" onClick={onExit}>← Ver blog</button>
+        </div>
+      </div>
+
+      <div className="admin-content">
+        <div className="admin-tabs">
+          {tabDefs.map(t => (
+            <button key={t.key} className={"admin-tab" + (tab === t.key ? " active" : "")} onClick={() => setTab(t.key)}>
+              {t.label}
+              {t.count > 0 && <span className={"tab-badge " + t.badgeCls}>{t.count}</span>}
+            </button>
+          ))}
+        </div>
+
+        {currentList.length === 0 ? (
+          <div className="admin-empty">
+            {tab === "revision" ? "No hay entradas pendientes de revisión."
+            : tab === "borrador" ? "No hay borradores."
+            : "No hay entradas publicadas aún."}
+          </div>
+        ) : (
+          <div className="admin-list">
+            {currentList.map(post => (
+              <div key={post.id} className="admin-post">
+                <div className="admin-thumb" style={{backgroundImage:post.imageUrl?`url(${post.imageUrl})`:""}}></div>
+                <div className="admin-info">
+                  <div className="admin-post-title">{post.title}</div>
+                  <div className="admin-post-meta">
+                    <span className={"s-dot " + post.status}></span>
+                    <span>{statusLabel[post.status]}</span>
+                    <span>·</span>
+                    <span>{catInfo(post.category).label}</span>
+                    <span>·</span>
+                    <span>{fmtDate(post.date)}</span>
+                  </div>
+                  {post.rejectionNote && (
+                    <div className="rejection-note">Nota: {post.rejectionNote}</div>
+                  )}
+                </div>
+                <div className="admin-actions">
+                  {post.status === "revision" && (
+                    <button className="act-btn approve" onClick={() => setApproving(post)}>
+                      Ver y aprobar
+                    </button>
+                  )}
+                  {post.status === "borrador" && (
+                    <button className="act-btn approve"
+                      onClick={() => mutate(post.id, { status:"revision", rejectionNote:null })}>
+                      Enviar a revisión
+                    </button>
+                  )}
+                  {post.status === "publicado" && (
+                    <button className="act-btn"
+                      onClick={() => mutate(post.id, { status:"borrador", publishedAt:null })}>
+                      Retirar
+                    </button>
+                  )}
+                  <button className="act-btn" onClick={() => setEditing(post)}>Editar</button>
+                  <button className="act-btn del" onClick={() => del(post.id)}>Eliminar</button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {editing !== null && (
+        <EditorModal
+          post={editing.id ? editing : null}
+          onSave={handleSave}
+          onClose={() => setEditing(null)}
+        />
+      )}
+      {approving && (
+        <ApprovalModal
+          post={approving}
+          onApprove={() => {
+            mutate(approving.id, { status:"publicado", publishedAt: Date.now() });
+            setApproving(null);
+          }}
+          onReject={(note) => {
+            mutate(approving.id, { status:"borrador", rejectionNote: note || null });
+            setApproving(null);
+          }}
+          onClose={() => setApproving(null)}
+        />
+      )}
+    </>
+  );
+}
+
+/* ----------------------------------------------------------
+   FOOTER
+   ---------------------------------------------------------- */
+function SiteFoot({ onAdminClick }) {
+  return (
+    <footer className="site-foot">
+      <div className="top">
+        <div>
+          <img src="assets/logo-chacras.png" alt="Chacras Nuevas" />
+          <p style={{margin:"16px 0 0",maxWidth:"22em",color:"rgba(245,239,229,.7)",fontSize:13}}>
+            Diez sitios sobre el mar.<br/>Centinela, Matanzas, Navidad.
+          </p>
+        </div>
+        <div>
+          <h4>Sitio web</h4>
+          <ul>
+            <li><a href="Editorial.html#proyecto">El proyecto</a></li>
+            <li><a href="MasterPlan.html">Master plan</a></li>
+            <li><a href="Editorial.html#ubicacion">Ubicación</a></li>
+            <li><a href="Editorial.html#contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href={WA_URL} target="_blank" rel="noopener">WhatsApp</a></li>
+            <li>+56 9 7430 0513</li>
+            <li><a href="mailto:eperezdecastro@gmail.com">eperezdecastro@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div className="bottom">
+        <span>© 2026 Chacras Nuevas de Matanzas · Blog</span>
+        <button className="admin-trigger" onClick={onAdminClick} title="Administrar blog">Admin</button>
+      </div>
+    </footer>
+  );
+}
+
+/* ----------------------------------------------------------
+   PUBLIC BLOG VIEW
+   ---------------------------------------------------------- */
+function PublicBlog({ posts, onAdminClick }) {
+  const [catFilter, setCatFilter] = useState("todos");
+  const [viewing, setViewing] = useState(null);
+
+  const published = useMemo(() =>
+    [...posts].filter(p => p.status === "publicado")
+      .sort((a,b) => (b.publishedAt||b.createdAt||0)-(a.publishedAt||a.createdAt||0)),
+    [posts]
+  );
+
+  const filtered = useMemo(() =>
+    catFilter === "todos" ? published : published.filter(p => p.category === catFilter),
+    [published, catFilter]
+  );
+
+  const usedCats = useMemo(() => {
+    const ids = new Set(published.map(p => p.category));
+    return CATS.filter(c => ids.has(c.id));
+  }, [published]);
+
+  const [featured, ...rest] = filtered;
+
+  return (
+    <>
+      <SiteNav />
+      <BlogHero />
+
+      {published.length > 0 && (
+        <div className="blog-filter">
+          <button className={"filter-pill" + (catFilter === "todos" ? " active" : "")}
+            onClick={() => setCatFilter("todos")}>
+            Todos ({published.length})
+          </button>
+          {usedCats.map(c => {
+            const cnt = published.filter(p => p.category === c.id).length;
+            return (
+              <button key={c.id}
+                className={"filter-pill" + (catFilter === c.id ? " active" : "")}
+                onClick={() => setCatFilter(c.id)}>
+                {c.label} ({cnt})
+              </button>
+            );
+          })}
+        </div>
+      )}
+
+      <main className="blog-section">
+        {filtered.length === 0 ? (
+          <div className="empty-state">
+            <span className="eyebrow">Sin entradas</span>
+            <h3>{catFilter !== "todos" ? "Nada en esta categoría aún." : "El blog está en preparación."}</h3>
+            <p>Vuelve pronto.</p>
+          </div>
+        ) : (
+          <>
+            {featured && <FeaturedPost post={featured} onClick={() => setViewing(featured)} />}
+            {rest.length > 0 && (
+              <div className="posts-grid">
+                {rest.map(p => <PostCard key={p.id} post={p} onClick={() => setViewing(p)} />)}
+              </div>
+            )}
+          </>
+        )}
+      </main>
+
+      <SiteFoot onAdminClick={onAdminClick} />
+      <a className="wp-fab" href={WA_URL} target="_blank" rel="noopener noreferrer">
+        <span className="pulse"></span> WhatsApp
+      </a>
+
+      {viewing && <PostViewModal post={viewing} onClose={() => setViewing(null)} />}
+    </>
+  );
+}
+
+/* ----------------------------------------------------------
+   APP ROOT
+   ---------------------------------------------------------- */
+function App() {
+  const [posts, setPosts]         = useState(null);   // null = cargando
+  const [adminMode, setAdminMode] = useState(false);
+  const [showPw, setShowPw]       = useState(false);
+
+  /* Carga inicial desde data/posts.json → localStorage → SAMPLE_POSTS */
+  useEffect(() => { fetchPosts().then(p => setPosts(p)); }, []);
+
+  /* Persiste borradores/cambios en localStorage mientras el admin trabaja */
+  useEffect(() => { if (posts !== null) savePosts(posts); }, [posts]);
+
+  if (posts === null) {
+    return (
+      <div style={{display:"flex",alignItems:"center",justifyContent:"center",
+        height:"100vh",fontFamily:"var(--ed-mono)",fontSize:11,
+        letterSpacing:".22em",textTransform:"uppercase",color:"var(--ed-muted)"}}>
+        Cargando…
+      </div>
+    );
+  }
+
+  return (
+    <>
+      {adminMode
+        ? <AdminPanel
+            posts={posts}
+            setPosts={setPosts}
+            onExit={() => { setAdminMode(false); window.scrollTo(0,0); }}
+          />
+        : <PublicBlog
+            posts={posts}
+            onAdminClick={() => setShowPw(true)}
+          />
+      }
+      {showPw && (
+        <PasswordModal
+          onSuccess={() => { setShowPw(false); setAdminMode(true); window.scrollTo(0,0); }}
+          onClose={() => setShowPw(false)}
+        />
+      )}
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>

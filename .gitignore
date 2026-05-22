@@ -1,0 +1,21 @@
+# ─── Archivos de prototipado / diseño (no van a producción) ──
+*.jsx
+mockups.css
+styles.css
+editorial-site.css
+captions.json
+
+# ─── Carpeta de uploads de trabajo (originales grandes) ───────
+uploads/
+
+# ─── Sistema operativo ────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ─── Editores ─────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+
+# ─── Node (si se usa en el futuro) ────────────────────────────
+node_modules/

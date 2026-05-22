@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+          http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!--
+    Sitemap · Chacras Nuevas de Matanzas
+    Actualizar <lastmod> al publicar cambios.
+    Reemplazar BASE_URL con el dominio real (ej: https://chacrasnuevas.cl)
+    antes de subir a producción.
+  -->
+
+  <!-- Home / Página principal -->
+  <url>
+    <loc>BASE_URL/index.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Master Plan — alta prioridad comercial -->
+  <url>
+    <loc>BASE_URL/MasterPlan.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Blog — actualización frecuente, clave para SEO local -->
+  <url>
+    <loc>BASE_URL/Blog.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>
