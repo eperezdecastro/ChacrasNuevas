@@ -1042,6 +1042,18 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 <body>
   <div id="root"></div>
 
+  <!-- Formulario oculto — detección de Netlify Forms en build time -->
+  <form name="leads-chacras-nuevas" data-netlify="true" hidden>
+    <input name="form-name"  type="hidden" value="leads-chacras-nuevas" />
+    <input name="origen"     type="text" />
+    <input name="nombre"     type="text" />
+    <input name="email"      type="email" />
+    <input name="telefono"   type="text" />
+    <input name="sitio"      type="text" />
+    <input name="mensaje"    type="text" />
+    <input name="contactar"  type="text" />
+  </form>
+
   <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
@@ -1051,6 +1063,14 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
    SHARED COMPONENTS — SiteNav, Footer, Modals, Data
    ============================================================ */
 const { useState, useEffect, useRef } = React;
+
+function submitLead(data) {
+  return fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({ 'form-name': 'leads-chacras-nuevas', ...data }).toString()
+  });
+}
 
 const WA_URL = "https://wa.me/56974300513?text=Me%20interesa%20saber%20m%C3%A1s%20de%20Chacras%20Nuevas";
 const EMAIL   = "eperezdecastro@gmail.com";
@@ -1141,29 +1161,54 @@ function SiteNav() {
 
 /* ---------- Brochure Modal ---------- */
 function BrochureModal({ onClose }) {
+  const [sent, setSent] = useState(false);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    submitLead(Object.fromEntries(fd)).finally(() => setSent(true));
+  }
+
   return (
     <div className="modal" onClick={onClose}>
       <div className="modal-card" onClick={e => e.stopPropagation()}>
         <button className="modal-close" onClick={onClose}>×</button>
-        <span className="eyebrow">Brochure · PDF · 3.8 MB</span>
-        <h3>Recibe el brochure<br/><em>completo</em>.</h3>
-        <p style={{fontSize:14, color:"var(--ed-ink-2)", margin:"6px 0 18px"}}>
-          Master plan, planos individuales, lista de precios y condiciones.
-          Te lo enviamos al correo y te contactamos solo si lo pides.
-        </p>
-        <form onSubmit={e => { e.preventDefault(); onClose(); }} style={{display:"grid", gap:12}}>
-          <input placeholder="Nombre" required style={{background:"transparent", border:"none", borderBottom:"1px solid var(--ed-line)", padding:"12px 0", fontFamily:"var(--ed-sans)", fontSize:15, outline:"none", color:"var(--ed-ink)"}} />
-          <input placeholder="Email" type="email" required style={{background:"transparent", border:"none", borderBottom:"1px solid var(--ed-line)", padding:"12px 0", fontFamily:"var(--ed-sans)", fontSize:15, outline:"none", color:"var(--ed-ink)"}} />
-          <input placeholder="Teléfono" style={{background:"transparent", border:"none", borderBottom:"1px solid var(--ed-line)", padding:"12px 0", fontFamily:"var(--ed-sans)", fontSize:15, outline:"none", color:"var(--ed-ink)"}} />
-          <label style={{fontSize:13, color:"var(--ed-ink-2)", display:"flex", alignItems:"center", gap:8}}>
-            <input type="checkbox" defaultChecked /> Quiero que me contacten para agendar visita
-          </label>
-          <button type="submit" className="btn solid">Enviar y descargar <span className="arrow">→</span></button>
-          <a href={WA_URL} target="_blank" rel="noopener noreferrer" style={{textAlign:"center", fontFamily:"var(--ed-mono)", fontSize:11, letterSpacing:"0.16em", textTransform:"uppercase", display:"inline-flex", alignItems:"center", gap:8, justifyContent:"center", marginTop:6}}>
-            <span style={{width:7, height:7, borderRadius:"50%", background:"#79c267", boxShadow:"0 0 0 3px rgba(121,194,103,0.28)"}}></span>
-            Prefiero hablar por WhatsApp
-          </a>
-        </form>
+        {sent ? (
+          <>
+            <span className="eyebrow">¡Listo!</span>
+            <h3>Gracias,<br/><em>te contactamos pronto</em>.</h3>
+            <p style={{fontSize:14, color:"var(--ed-ink-2)", margin:"6px 0 22px"}}>
+              Te enviamos el brochure al correo. Si prefieres hablar ahora:
+            </p>
+            <a href={WA_URL} target="_blank" rel="noopener noreferrer" className="btn solid wp">
+              <span className="pulse"></span>WhatsApp directo
+            </a>
+          </>
+        ) : (
+          <>
+            <span className="eyebrow">Brochure · PDF · 3.8 MB</span>
+            <h3>Recibe el brochure<br/><em>completo</em>.</h3>
+            <p style={{fontSize:14, color:"var(--ed-ink-2)", margin:"6px 0 18px"}}>
+              Master plan, planos individuales, lista de precios y condiciones.
+              Te lo enviamos al correo y te contactamos solo si lo pides.
+            </p>
+            <form name="leads-chacras-nuevas" data-netlify="true" onSubmit={handleSubmit} style={{display:"grid", gap:12}}>
+              <input type="hidden" name="form-name" value="leads-chacras-nuevas" />
+              <input type="hidden" name="origen" value="Modal Brochure" />
+              <input name="nombre" placeholder="Nombre" required style={{background:"transparent", border:"none", borderBottom:"1px solid var(--ed-line)", padding:"12px 0", fontFamily:"var(--ed-sans)", fontSize:15, outline:"none", color:"var(--ed-ink)"}} />
+              <input name="email" placeholder="Email" type="email" required style={{background:"transparent", border:"none", borderBottom:"1px solid var(--ed-line)", padding:"12px 0", fontFamily:"var(--ed-sans)", fontSize:15, outline:"none", color:"var(--ed-ink)"}} />
+              <input name="telefono" placeholder="Teléfono" style={{background:"transparent", border:"none", borderBottom:"1px solid var(--ed-line)", padding:"12px 0", fontFamily:"var(--ed-sans)", fontSize:15, outline:"none", color:"var(--ed-ink)"}} />
+              <label style={{fontSize:13, color:"var(--ed-ink-2)", display:"flex", alignItems:"center", gap:8}}>
+                <input type="checkbox" name="contactar" value="sí" defaultChecked /> Quiero que me contacten para agendar visita
+              </label>
+              <button type="submit" className="btn solid">Enviar y descargar <span className="arrow">→</span></button>
+              <a href={WA_URL} target="_blank" rel="noopener noreferrer" style={{textAlign:"center", fontFamily:"var(--ed-mono)", fontSize:11, letterSpacing:"0.16em", textTransform:"uppercase", display:"inline-flex", alignItems:"center", gap:8, justifyContent:"center", marginTop:6}}>
+                <span style={{width:7, height:7, borderRadius:"50%", background:"#79c267", boxShadow:"0 0 0 3px rgba(121,194,103,0.28)"}}></span>
+                Prefiero hablar por WhatsApp
+              </a>
+            </form>
+          </>
+        )}
       </div>
     </div>
   );
@@ -1463,6 +1508,7 @@ function SportsIcons() {
 function HomePage() {
   const [showBrochure, setShowBrochure] = useState(false);
   const [activeTab, setActiveTab] = useState("proyecto");
+  const [contactSent, setContactSent] = useState(false);
   const data = DATA;
 
   const counts = { proyecto: data.proyecto.length, sitios: data.sitios.length };
@@ -1657,23 +1703,34 @@ function HomePage() {
               <a href={WA_URL} target="_blank" rel="noopener noreferrer" className="btn solid wp"><span className="pulse"></span>WhatsApp directo</a>
             </div>
           </div>
-          <form onSubmit={e => e.preventDefault()}>
-            <input placeholder="Nombre" required />
-            <input placeholder="Email" type="email" required />
-            <input placeholder="Teléfono" />
-            <select defaultValue="">
-              <option value="" disabled>Sitio de interés (opcional)</option>
-              <option>Aún no lo sé</option>
-              <option>Sitio 06 · 926 m²</option>
-              <option>Sitio 08 · 832 m²</option>
-              <option>Sitio 09 · 729 m²</option>
-              <option>Sitio 10 · 622 m²</option>
-            </select>
-            <textarea rows="3" placeholder="Mensaje (opcional)"></textarea>
-            <button type="submit" className="btn solid" style={{justifySelf:"start", marginTop:8}}>
-              Recibir brochure <span className="arrow">→</span>
-            </button>
-          </form>
+          {contactSent ? (
+            <div style={{display:"flex", flexDirection:"column", gap:16, padding:"32px 0"}}>
+              <span className="eyebrow">¡Recibido!</span>
+              <p style={{fontFamily:"var(--ed-serif)", fontStyle:"italic", fontSize:"clamp(22px,3vw,32px)", margin:0, lineHeight:1.2}}>Gracias, <em>te contactamos pronto</em>.</p>
+              <p style={{color:"var(--ed-ink-2)", margin:0}}>Te enviamos el brochure al correo. Si prefieres hablar ahora:</p>
+              <a href={WA_URL} target="_blank" rel="noopener noreferrer" className="btn solid wp" style={{alignSelf:"start"}}><span className="pulse"></span>WhatsApp directo</a>
+            </div>
+          ) : (
+            <form name="leads-chacras-nuevas" data-netlify="true" onSubmit={e => { e.preventDefault(); const fd = new FormData(e.target); submitLead(Object.fromEntries(fd)).finally(() => setContactSent(true)); }}>
+              <input type="hidden" name="form-name" value="leads-chacras-nuevas" />
+              <input type="hidden" name="origen" value="Editorial - Contacto" />
+              <input name="nombre" placeholder="Nombre" required />
+              <input name="email" placeholder="Email" type="email" required />
+              <input name="telefono" placeholder="Teléfono" />
+              <select name="sitio" defaultValue="">
+                <option value="" disabled>Sitio de interés (opcional)</option>
+                <option>Aún no lo sé</option>
+                <option>Sitio 06 · 926 m²</option>
+                <option>Sitio 08 · 832 m²</option>
+                <option>Sitio 09 · 729 m²</option>
+                <option>Sitio 10 · 622 m²</option>
+              </select>
+              <textarea name="mensaje" rows="3" placeholder="Mensaje (opcional)"></textarea>
+              <button type="submit" className="btn solid" style={{justifySelf:"start", marginTop:8}}>
+                Recibir brochure <span className="arrow">→</span>
+              </button>
+            </form>
+          )}
         </div>
       </section>
 
