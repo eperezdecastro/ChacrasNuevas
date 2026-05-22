@@ -7,11 +7,11 @@
   publish = "."     # raíz del repo = carpeta publicada
   # command = ""    # sin build command (HTML estático)
 
-# ── Redirect raíz ─────────────────────────────────────────────
+# ── Rewrite raíz: sirve Editorial.html en / sin cambiar la URL ─
 [[redirects]]
   from   = "/"
   to     = "/Editorial.html"
-  status = 301
+  status = 200
 
 # ── Headers de seguridad (todas las páginas) ──────────────────
 [[headers]]
