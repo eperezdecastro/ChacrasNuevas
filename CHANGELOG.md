@@ -5,6 +5,35 @@ Formato: `[versión] — fecha · descripción`
 
 ---
 
+## [1.3.0] — 2026-05-22
+
+### Añadido
+- Google Search Console verificado para `chacrasnuevas.cl` vía registro TXT en Netlify DNS
+- Sitemap enviado a Google Search Console (3 páginas descubiertas: home, MasterPlan, Blog)
+
+### Cambiado
+- `Editorial.html` renombrado a `index.html` — URL canónica queda `chacrasnuevas.cl/` (sin sufijos)
+- `Editorial.html` convertido en redirect simple a `/` (backward-compat)
+- `netlify.toml`: redirect 301 `/Editorial.html` → `/` reemplaza el rewrite anterior
+- Todos los links internos en `Blog.html` y `MasterPlan.html` actualizados de `Editorial.html` a `/`
+- `sitemap.xml`: home URL actualizada a `https://chacrasnuevas.cl/`
+- Netlify Forms habilitado y verificado: formularios reciben submissions y notifican por email
+
+---
+
+## [1.2.0] — 2026-05-22
+
+### Añadido
+- `README.md` con estructura del repo, páginas, flujos de actualización y blog
+- `CHANGELOG.md` — este archivo
+- `DECISIONS.md` con arquitectura, decisiones técnicas, flujos y límites del plan
+
+### Cambiado
+- `sitemap.xml`: `BASE_URL` reemplazado por `https://chacrasnuevas.cl`, `lastmod` actualizado a 2026-05-22
+- `robots.txt` verificado (ya tenía el dominio correcto)
+
+---
+
 ## [1.1.0] — 2026-05-22
 
 ### Añadido
