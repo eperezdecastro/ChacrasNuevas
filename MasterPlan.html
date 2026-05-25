@@ -197,19 +197,19 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 }
 .masterplan-vis .pin {
   position: absolute;
-  width: 32px; height: 32px;
-  margin: -16px 0 0 -16px;
+  width: 80px; height: 80px;
+  margin: -40px 0 0 -40px;
   border-radius: 50%;
   background: rgba(245,239,229,0.94);
   color: var(--ed-ink);
   font-family: var(--ed-serif);
   font-style: italic;
-  font-size: 14px;
+  font-size: 35px;
   display: flex; align-items: center; justify-content: center;
   cursor: pointer;
   transition: transform .25s, box-shadow .25s;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.3);
-  border: 2px solid transparent;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.3);
+  border: 5px solid transparent;
 }
 .masterplan-vis .pin:hover { transform: scale(1.18); box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
 .masterplan-vis .pin.av { background: #79c267; color: #14130f; border-color: rgba(255,255,255,0.6); }
@@ -714,10 +714,10 @@ const DATA = {
     { sitio:"01", m2:654,  precio:"UF 4.260", estado:"Disponible", imagenes:[{src:"assets/sitios/sitio-08-a.jpg",    title:"Sitio 01 · vista frontal",   caption:"Hacia el oeste · línea de costa.",      cover:true}] },
     { sitio:"02", m2:667,  precio:"UF 4.340", estado:"Disponible", imagenes:[{src:"assets/proyecto/pradera.png",     title:"Sitio 02 · plataforma",      caption:"Pradera con casas vecinas al fondo.",   cover:true}] },
     { sitio:"03", m2:661,  precio:"UF 4.300", estado:"Disponible", imagenes:[{src:"assets/proyecto/pradera.png",     title:"Sitio 03 · pradera",         caption:"661 m² · pradera.",                     cover:true}] },
-    { sitio:"04", m2:690,  precio:"—",        estado:"Reservado",  imagenes:[{src:"assets/sitios/sitio-08-b.jpg",    title:"Sitio 04 · plataforma",      caption:"Vista directa al mar.",                 cover:true}] },
+    { sitio:"04", m2:690,  precio:"—",         estado:"Disponible", imagenes:[{src:"assets/sitios/sitio-08-b.jpg",    title:"Sitio 04 · plataforma",      caption:"Vista directa al mar.",                 cover:true}] },
     { sitio:"05", m2:727,  precio:"UF 4.730", estado:"Disponible", imagenes:[{src:"assets/vida/mar-curva.jpg",       title:"Sitio 05 · plataforma alta", caption:"727 m² · sobre el camino interior.",   cover:true}] },
     { sitio:"06", m2:926,  precio:"UF 6.110", estado:"Disponible", imagenes:[{src:"assets/sitios/sitio-06-a.png",    title:"Sitio 06 · panorámica",      caption:"926 m² · vista 180° al Pacífico.",     cover:true}] },
-    { sitio:"07", m2:647,  precio:"UF 4.530", estado:"Disponible", imagenes:[{src:"assets/proyecto/camino-curva.jpg",title:"Sitio 07 · acceso interior",  caption:"647 m² · resguardado del viento.",     cover:true}] },
+    { sitio:"07", m2:647,  precio:"—",         estado:"Reservado", imagenes:[{src:"assets/proyecto/camino-curva.jpg",title:"Sitio 07 · acceso interior",  caption:"647 m² · resguardado del viento.",     cover:true}] },
     { sitio:"08", m2:832,  precio:"UF 5.580", estado:"Disponible", imagenes:[
       {src:"assets/sitios/sitio-08-a.jpg", title:"Sitio 08 · vista frontal", caption:"832 m² · vista al mar abierto e islotes.", cover:true},
       {src:"assets/sitios/sitio-08-b.jpg", title:"Sitio 08 · vista lateral", caption:"Hacia el norte · luz de mañana.",          cover:false}
@@ -733,7 +733,7 @@ const STATUS_KEY = (s) => s === "Disponible" ? "av" : s === "Reservado" ? "re" :
 const PIN_POSITIONS = {
   "01": [89, 48], "02": [78, 54], "03": [66, 61], "04": [55, 67],
   "05": [43, 72], "06": [29, 77], "07": [31, 53], "08": [38, 32],
-  "09": [54, 28], "10": [73, 28]
+  "09": [54, 32], "10": [73, 28]
 };
 
 /* ============================================================
