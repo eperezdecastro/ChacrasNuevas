@@ -711,19 +711,19 @@ const PHONE   = "+56 9 7430 0513";
    ============================================================ */
 const DATA = {
   sitios: [
-    { sitio:"01", m2:654,  precio:"UF 4.260", estado:"Disponible", imagenes:[{src:"assets/sitios/sitio-08-a.jpg",    title:"Sitio 01 · vista frontal",    caption:"Hacia el oeste · línea de costa.",      cover:true}] },
-    { sitio:"02", m2:667,  precio:"UF 4.340", estado:"Disponible", imagenes:[{src:"assets/proyecto/pradera.png",     title:"Sitio 02 · plataforma",       caption:"Pradera con casas vecinas al fondo.",   cover:true}] },
-    { sitio:"03", m2:661,  precio:"UF 4.300", estado:"Disponible", imagenes:[{src:"assets/proyecto/pradera.png",     title:"Sitio 03 · pradera",          caption:"661 m² · pradera.",                     cover:true}] },
-    { sitio:"04", m2:690,  precio:"—",         estado:"Disponible", imagenes:[{src:"assets/sitios/sitio-08-b.jpg",    title:"Sitio 04 · plataforma",       caption:"Vista directa al mar.",                 cover:true}] },
-    { sitio:"05", m2:727,  precio:"UF 4.730", estado:"Disponible", imagenes:[{src:"assets/vida/mar-curva.jpg",       title:"Sitio 05 · plataforma alta",  caption:"727 m² · sobre el camino interior.",   cover:true}] },
-    { sitio:"06", m2:926,  precio:"UF 6.110", estado:"Disponible", imagenes:[{src:"assets/sitios/sitio-06-a.png",    title:"Sitio 06 · panorámica",       caption:"926 m² · vista 180° al Pacífico.",     cover:true}] },
-    { sitio:"07", m2:647,  precio:"—",         estado:"Reservado",  imagenes:[{src:"assets/proyecto/camino-curva.jpg",title:"Sitio 07 · acceso interior",  caption:"647 m² · resguardado del viento.",     cover:true}] },
-    { sitio:"08", m2:832,  precio:"UF 5.580", estado:"Disponible", imagenes:[
+    { sitio:"01", m2:654,  precio:"UF 4.260", estado:"Disponible", descripcion:"Vista al mar y condominio en altura.",              imagenes:[{src:"assets/sitios/sitio-08-a.jpg",    title:"Sitio 01 · vista frontal",    caption:"Hacia el oeste · línea de costa.",      cover:true}] },
+    { sitio:"02", m2:667,  precio:"UF 4.340", estado:"Disponible", descripcion:"Lateral, vista Islote Pájaros.",                    imagenes:[{src:"assets/proyecto/pradera.png",     title:"Sitio 02 · plataforma",       caption:"Pradera con casas vecinas al fondo.",   cover:true}] },
+    { sitio:"03", m2:661,  precio:"UF 4.300", estado:"Disponible", descripcion:"Lateral, vista Islote Pájaros.",                    imagenes:[{src:"assets/proyecto/pradera.png",     title:"Sitio 03 · pradera",          caption:"661 m² · pradera.",                     cover:true}] },
+    { sitio:"04", m2:690,  precio:"—",         estado:"Disponible", descripcion:"Lateral, vista Islote Pájaros.",                    imagenes:[{src:"assets/sitios/sitio-08-b.jpg",    title:"Sitio 04 · plataforma",       caption:"Vista directa al mar.",                 cover:true}] },
+    { sitio:"05", m2:727,  precio:"UF 4.730", estado:"Disponible", descripcion:"Lateral, vista Islote Pájaros.",                    imagenes:[{src:"assets/vida/mar-curva.jpg",       title:"Sitio 05 · plataforma alta",  caption:"727 m² · sobre el camino interior.",   cover:true}] },
+    { sitio:"06", m2:926,  precio:"UF 6.110", estado:"Disponible", descripcion:"Frontal, vista 180° al mar e islotes.",             imagenes:[{src:"assets/sitios/sitio-06-a.png",    title:"Sitio 06 · panorámica",       caption:"926 m² · vista 180° al Pacífico.",     cover:true}] },
+    { sitio:"07", m2:647,  precio:"—",         estado:"Reservado",  descripcion:"Frontal, vista al mar, caleta e islotes.",          imagenes:[{src:"assets/proyecto/camino-curva.jpg",title:"Sitio 07 · acceso interior",  caption:"647 m² · resguardado del viento.",     cover:true}] },
+    { sitio:"08", m2:832,  precio:"UF 5.580", estado:"Disponible", descripcion:"Frontal norte, vista al mar, caleta e islotes.",    imagenes:[
       {src:"assets/sitios/sitio-08-a.jpg", title:"Sitio 08 · vista frontal", caption:"832 m² · vista al mar abierto e islotes.", cover:true},
       {src:"assets/sitios/sitio-08-b.jpg", title:"Sitio 08 · vista lateral", caption:"Hacia el norte · luz de mañana.",          cover:false}
     ]},
-    { sitio:"09", m2:729,  precio:"UF 4.890", estado:"Disponible", imagenes:[{src:"assets/sitios/sitio-09-a.png",    title:"Sitio 09 · línea de islotes", caption:"729 m² · vista a la rompiente.",      cover:true}] },
-    { sitio:"10", m2:622,  precio:"UF 4.050", estado:"Disponible", imagenes:[{src:"assets/vida/persona-costa.jpg",   title:"Sitio 10 · mirador",          caption:"622 m² · primer sitio del proyecto.",  cover:true}] }
+    { sitio:"09", m2:729,  precio:"UF 4.890", estado:"Disponible", descripcion:"Vista norte al mar, valle chacras e islote Pájaros.", imagenes:[{src:"assets/sitios/sitio-09-a.png",    title:"Sitio 09 · línea de islotes", caption:"729 m² · vista a la rompiente.",      cover:true}] },
+    { sitio:"10", m2:622,  precio:"UF 4.050", estado:"Disponible", descripcion:"Vista al mar, valle chacras e islote Pájaros.",     imagenes:[{src:"assets/vida/persona-costa.jpg",   title:"Sitio 10 · mirador",          caption:"622 m² · primer sitio del proyecto.",  cover:true}] }
   ]
 };
 
@@ -1068,7 +1068,7 @@ function MasterPlanPage() {
                 <tr key={s.sitio} onClick={() => setOpenSitio(s.sitio)} style={{cursor:"pointer"}}>
                   <td><span className="num">{s.sitio}</span></td>
                   <td>{s.m2} m²</td>
-                  <td style={{color:"var(--ed-muted)", fontSize:13}}>{s.imagenes[0].caption.split(" · ").slice(-1)[0]}</td>
+                  <td style={{color:"var(--ed-muted)", fontSize:13}}>{s.descripcion}</td>
                   <td><span className={"stat " + k}>{s.estado}</span></td>
                   <td style={{textAlign:"right", fontFamily:"var(--ed-mono)", fontSize:11, letterSpacing:"0.16em", textTransform:"uppercase", color:"var(--ed-muted)"}}>Ver →</td>
                 </tr>
