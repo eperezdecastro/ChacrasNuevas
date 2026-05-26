@@ -197,19 +197,19 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 }
 .masterplan-vis .pin {
   position: absolute;
-  width: 32px; height: 32px;
-  margin: -16px 0 0 -16px;
+  width: 80px; height: 80px;
+  margin: -40px 0 0 -40px;
   border-radius: 50%;
   background: rgba(245,239,229,0.94);
   color: var(--ed-ink);
   font-family: var(--ed-serif);
   font-style: italic;
-  font-size: 14px;
+  font-size: 35px;
   display: flex; align-items: center; justify-content: center;
   cursor: pointer;
   transition: transform .25s, box-shadow .25s;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.3);
-  border: 2px solid transparent;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.3);
+  border: 5px solid transparent;
 }
 .masterplan-vis .pin:hover { transform: scale(1.18); box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
 .masterplan-vis .pin.av { background: #79c267; color: #14130f; border-color: rgba(255,255,255,0.6); }
@@ -711,19 +711,19 @@ const PHONE   = "+56 9 7430 0513";
    ============================================================ */
 const DATA = {
   sitios: [
-    { sitio:"01", m2:654,  precio:"UF 4.260", estado:"Disponible", imagenes:[{src:"assets/sitios/sitio-08-a.jpg",    title:"Sitio 01 · vista frontal",   caption:"Hacia el oeste · línea de costa.",      cover:true}] },
-    { sitio:"02", m2:667,  precio:"UF 4.340", estado:"Disponible", imagenes:[{src:"assets/proyecto/pradera.png",     title:"Sitio 02 · plataforma",      caption:"Pradera con casas vecinas al fondo.",   cover:true}] },
-    { sitio:"03", m2:661,  precio:"UF 4.300", estado:"Disponible", imagenes:[{src:"assets/proyecto/pradera.png",     title:"Sitio 03 · pradera",         caption:"661 m² · pradera.",                     cover:true}] },
-    { sitio:"04", m2:690,  precio:"—",        estado:"Reservado",  imagenes:[{src:"assets/sitios/sitio-08-b.jpg",    title:"Sitio 04 · plataforma",      caption:"Vista directa al mar.",                 cover:true}] },
-    { sitio:"05", m2:727,  precio:"UF 4.730", estado:"Disponible", imagenes:[{src:"assets/vida/mar-curva.jpg",       title:"Sitio 05 · plataforma alta", caption:"727 m² · sobre el camino interior.",   cover:true}] },
-    { sitio:"06", m2:926,  precio:"UF 6.110", estado:"Disponible", imagenes:[{src:"assets/sitios/sitio-06-a.png",    title:"Sitio 06 · panorámica",      caption:"926 m² · vista 180° al Pacífico.",     cover:true}] },
-    { sitio:"07", m2:647,  precio:"UF 4.530", estado:"Disponible", imagenes:[{src:"assets/proyecto/camino-curva.jpg",title:"Sitio 07 · acceso interior",  caption:"647 m² · resguardado del viento.",     cover:true}] },
-    { sitio:"08", m2:832,  precio:"UF 5.580", estado:"Disponible", imagenes:[
-      {src:"assets/sitios/sitio-08-a.jpg", title:"Sitio 08 · vista frontal", caption:"832 m² · vista al mar abierto e islotes.", cover:true},
-      {src:"assets/sitios/sitio-08-b.jpg", title:"Sitio 08 · vista lateral", caption:"Hacia el norte · luz de mañana.",          cover:false}
+    { sitio:"01", m2:654,  precio:"UF 4.260", estado:"Disponible", descripcion:"Vista al mar y condominio en altura.",              imagenes:[{src:"assets/sitios/sitio-01-a.jpg",    title:"Sitio 01 · vista frontal",    caption:"Hacia el oeste · línea de costa.",      cover:true}] },
+    { sitio:"02", m2:667,  precio:"UF 4.340", estado:"Disponible", descripcion:"Lateral, vista Islote Pájaros.",                    imagenes:[{src:"assets/sitios/sitio-02-a.png",    title:"Sitio 02 · vista poniente",   caption:"Hacia el oeste · línea de costa.",      cover:true}] },
+    { sitio:"03", m2:661,  precio:"UF 4.300", estado:"Disponible", descripcion:"Lateral, vista Islote Pájaros.",                    imagenes:[{src:"assets/sitios/sitio-03-b.png",    title:"Sitio 03 · vista norponiente", caption:"Hacia horizonte.",             cover:true}] },
+    { sitio:"04", m2:690,  precio:"—",         estado:"Disponible", descripcion:"Lateral, vista Islote Pájaros.",                    imagenes:[{src:"assets/sitios/sitio-04-b.png",    title:"Sitio 04 · vista poniente",   caption:"Hacia el horizonte.",                   cover:true}] },
+    { sitio:"05", m2:727,  precio:"UF 4.730", estado:"Disponible", descripcion:"Lateral, vista Islote Pájaros.",                    imagenes:[{src:"assets/sitios/sitio-05-b.png",    title:"Sitio 05 · vista oriente",    caption:"Hacia el condominio.",                  cover:true}] },
+    { sitio:"06", m2:926,  precio:"UF 6.110", estado:"Disponible", descripcion:"Frontal, vista 180° al mar e islotes.",             imagenes:[{src:"assets/sitios/sitio-06-b.png",    title:"Sitio 06 · vista norponiente", caption:"Atardecer hacia Islote de los Pájaros.", cover:true}] },
+    { sitio:"07", m2:647,  precio:"—",         estado:"Reservado",  descripcion:"Frontal, vista al mar, caleta e islotes.",          imagenes:[{src:"assets/sitios/sitio-08-a.jpg",    title:"Sitio 07 · vista frontal",    caption:"Hacia el oeste · línea de costa.",      cover:true}] },
+    { sitio:"08", m2:832,  precio:"UF 5.580", estado:"Disponible", descripcion:"Frontal norte, vista al mar, caleta e islotes.",    imagenes:[{src:"assets/sitios/sitio-08-c.png",    title:"Sitio 08 · vista norponiente", caption:"Vista hacia valle e Islote de los Pájaros.", cover:true}] },
+    { sitio:"09", m2:729,  precio:"UF 4.890", estado:"Disponible", descripcion:"Vista norte al mar, valle chacras e islote Pájaros.", imagenes:[
+      {src:"assets/sitios/sitio-09-c.png", title:"Sitio 09 · vista norponiente", caption:"Vista a Chacras Viejas e Islote de los Pájaros.", cover:true},
+      {src:"assets/sitios/sitio-09-b.png", title:"Sitio 09 · vista norponiente", caption:"Hacia el oeste · vista a los islotes.",            cover:false}
     ]},
-    { sitio:"09", m2:729,  precio:"UF 4.890", estado:"Disponible", imagenes:[{src:"assets/sitios/sitio-09-a.png",    title:"Sitio 09 · línea de islotes", caption:"729 m² · vista a la rompiente.",      cover:true}] },
-    { sitio:"10", m2:622,  precio:"UF 4.050", estado:"Disponible", imagenes:[{src:"assets/vida/persona-costa.jpg",   title:"Sitio 10 · mirador",         caption:"622 m² · primer sitio del proyecto.",  cover:true}] }
+    { sitio:"10", m2:622,  precio:"UF 4.050", estado:"Disponible", descripcion:"Vista al mar, valle chacras e islote Pájaros.",     imagenes:[{src:"assets/sitios/sitio-10-b.png",    title:"Sitio 10 · vista poniente",   caption:"Desde atrás · vista a condominio y horizonte.", cover:true}] }
   ]
 };
 
@@ -733,7 +733,7 @@ const STATUS_KEY = (s) => s === "Disponible" ? "av" : s === "Reservado" ? "re" :
 const PIN_POSITIONS = {
   "01": [89, 48], "02": [78, 54], "03": [66, 61], "04": [55, 67],
   "05": [43, 72], "06": [29, 77], "07": [31, 53], "08": [38, 32],
-  "09": [54, 28], "10": [73, 28]
+  "09": [55, 32], "10": [73, 28]
 };
 
 /* ============================================================
@@ -972,7 +972,7 @@ function MasterPlanPage() {
         <div className="mp-hero-inner">
           <span className="eyebrow">Master plan · Etapa 01</span>
           <h1>Diez sitios,<br/><em>una sola vista</em>.</h1>
-          <p>Haz click en cualquier sitio del plano para ver superficie, precio, estado y galería de imágenes desde ese punto exacto.</p>
+          <p>Todos los sitios miran al mar. Un master plan pensado para preservar las vistas, cuidar la arquitectura y dar forma a una comunidad consciente, integrada al paisaje de Matanzas.</p>
           <div style={{display:"flex", gap:12, marginTop:24, flexWrap:"wrap"}}>
             <button className="btn solid" onClick={() => setShowBrochure(true)}>
               Recibir brochure <span className="arrow">→</span>
@@ -1056,7 +1056,7 @@ function MasterPlanPage() {
             <tr>
               <th>Sitio</th>
               <th>Superficie</th>
-              <th>Vista</th>
+              <th>Descripción</th>
               <th>Estado</th>
               <th></th>
             </tr>
@@ -1068,7 +1068,7 @@ function MasterPlanPage() {
                 <tr key={s.sitio} onClick={() => setOpenSitio(s.sitio)} style={{cursor:"pointer"}}>
                   <td><span className="num">{s.sitio}</span></td>
                   <td>{s.m2} m²</td>
-                  <td style={{color:"var(--ed-muted)", fontSize:13}}>{s.imagenes[0].caption.split(" · ").slice(-1)[0]}</td>
+                  <td style={{color:"var(--ed-muted)", fontSize:13}}>{s.descripcion}</td>
                   <td><span className={"stat " + k}>{s.estado}</span></td>
                   <td style={{textAlign:"right", fontFamily:"var(--ed-mono)", fontSize:11, letterSpacing:"0.16em", textTransform:"uppercase", color:"var(--ed-muted)"}}>Ver →</td>
                 </tr>
